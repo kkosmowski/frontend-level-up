@@ -8,3 +8,7 @@ html {
 body {
   font-size: 1.6rem;
 }
+
+::selection {
+  background-color: rgba($primary-text-color, 0.25);
+}

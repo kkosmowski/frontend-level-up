@@ -26,3 +26,15 @@
     }
   }
 }
+
+@include media-tablet-down() {
+  .main-nav {
+    display: none;
+  }
+}
+
+@include media-desktop-xs() {
+  .main-nav {
+    display: none;
+  }
+}

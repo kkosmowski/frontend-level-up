@@ -1,14 +1,33 @@
+$main-header-desktop-height: 55rem;
+$main-header-mobile-height: 52rem;
+
+$main-header-wrapper-desktop-height: 9rem;
+$main-header-wrapper-tablet-height: 6rem;
+$main-header-wrapper-mobile-height: 5.2rem;
+
+$main-header-wrapper-desktop-margin: 0 1rem;
+$main-header-wrapper-mobile-margin: 0 2rem;
+
+$logo-desktop-width: 11.7rem;
+$logo-mobile-width: 10rem;
+$logo-desktop-height: 2.2rem;
+$logo-mobile-height: 1.8rem;
+
 .header {
   width: 100%;
   @include flex(center, flex-start);
   height: $main-header-desktop-height;
 
+  &__mobile-menu-button {
+    display: none;
+  }
+
   &__wrapper {
     width: 100%;
     max-width: $layout-desktop-max-width;
-    height: $main-nav-desktop-height;
+    height: $main-header-wrapper-desktop-height;
     @include flex(space-between, center);
-    margin: 0 1rem;
+    margin: $main-header-wrapper-desktop-margin;
   }
 
   .main-nav,
@@ -17,8 +36,8 @@
   }
 
   &__logo {
-    width: 11.7rem;
-    height: 2.2rem;
+    width: $logo-desktop-width;
+    height: $logo-desktop-height;
     object-fit: contain;
   }
 
@@ -27,10 +46,66 @@
   }
 
   &__user-button {
-    margin-right: 1.5rem;
+    margin-right: 1rem;
   }
 }
 
 .main-header {
-  background: $main-header-background-color url('//via.placeholder.com/1920x550.png') no-repeat center / cover;
+  background: $main-header-background-color no-repeat center / cover;
+
+  &.mobile {
+    background-image: url('//via.placeholder.com/600x800.png');
+  }
+
+  &.desktop {
+    background-image: url('//via.placeholder.com/1920x550.png');
+  }
+}
+
+@include media-desktop-xs() {
+  .header {
+    &__mobile-menu-button {
+      display: inline-block;
+      margin-left: -$default-horizontal-button-padding;
+      font-size: 2rem;
+    }
+  }
+}
+
+@include media-tablet() {
+  .header {
+    &__wrapper {
+      height: $main-header-wrapper-tablet-height;
+    }
+  }
+}
+
+@include media-tablet-down() {
+  .header {
+    &__mobile-menu-button {
+      display: inline-block;
+      margin-left: -$default-horizontal-button-padding;
+      font-size: 2rem;
+    }
+  }
+}
+@include media-mobile() {
+  .header {
+    height: $main-header-mobile-height;
+
+    &__wrapper {
+      height: $main-header-wrapper-mobile-height;
+      margin: $main-header-wrapper-mobile-margin;
+    }
+
+    &__logo {
+      margin-left: 1.5rem;
+      width: $logo-mobile-width;
+      height: $logo-mobile-height;
+    }
+
+    &__user-button {
+      margin-right: 0.5rem;
+    }
+  }
 }
