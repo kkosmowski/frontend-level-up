@@ -1,5 +1,6 @@
 import './styles/style.scss';
 import Logo from './assets/images/logo-zonex.svg';
+import SLIDES from './assets/slider-products';
 
 const renderLogo = () => {
   document.querySelector('.header__logo').src = Logo;
@@ -20,7 +21,7 @@ const renderProducts = () => {
 };
 
 const handleSlider = () => {
-  // custom slider, probably an overkill, but whatever
+  // custom slider, probably an overkill, but I've always wanted to write one
 
   const sliderPrevButton = document.querySelector('.main-slider__button--prev');
   const sliderNextButton = document.querySelector('.main-slider__button--next');
@@ -48,40 +49,7 @@ const handleSlider = () => {
 };
 
 const createSlider = (slides) => {
-  const SLIDES = [
-    {
-      name: 'Seersucker underwire',
-      price: 0,
-    },
-    {
-      name: 'Embroidered Indian cotton beach',
-      price: {
-        from: 50.99,
-        to: 99.99,
-      },
-    },
-    {
-      name: 'Cabana oversized sunglasses',
-      price: 65.00,
-    },
-    {
-      name: '6" stretch eco swim trunk',
-      price: 57.99,
-    },
-    {
-      name: 'Studded wrap sandals',
-      price: 112.99,
-      oldPrice: 150.00
-    },
-    {
-      name: 'Printed denim jacket',
-      price: 74.99,
-    },
-    {
-      name: 'Nylon bomber jacket',
-      price: 38.99,
-    },
-  ];
+  const format = (number) => `$${number.toFixed(2)}`;
 
   SLIDES.map((item) => {
     const slide = document.createElement('li');
@@ -97,13 +65,13 @@ const createSlider = (slides) => {
     const price = document.createElement('span');
     price.classList.add('product__price');
     price.textContent = typeof item.price === 'number'
-      ? `$${ item.price }`
-      : `$${ item.price.from } - $${ item.price.to }`;
+      ? format(item.price)
+      : `${ format(item.price.from) } - ${ format(item.price.to) }`;
 
     if (item.oldPrice) {
       const oldPrice = document.createElement('span');
       oldPrice.classList.add('product__previous-price');
-      oldPrice.textContent = `$${item.oldPrice}`;
+      oldPrice.textContent = format(item.oldPrice);
 
       price.prepend(oldPrice);
     }

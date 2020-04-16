@@ -5,7 +5,28 @@ $product-main-slide-desktop-width: 26.8rem;
   &.main-slider__slide {
     width: $product-main-slide-desktop-width;
     height: $main-slide-desktop-slide-height;
-    display: block;
+    @include flex(flex-start, flex-end);
+    padding: 2rem;
     background-size: cover;
+  }
+
+  &__details {
+    @include flex(flex-start, flex-start);
+    flex-direction: column;
+    font-size: 1.3rem;
+  }
+
+  &__name {
+    color: $secondary-text-color;
+  }
+
+  &__price {
+    font-weight: 700;
+  }
+
+  &__previous-price {
+    text-decoration: line-through;
+    opacity: 0.25;
+    margin-right: 0.5rem;
   }
 }
