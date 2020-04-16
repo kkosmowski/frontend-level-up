@@ -1,0 +1,11 @@
+$product-main-slide-desktop-width: 26.8rem;
+
+.product {
+
+  &.main-slider__slide {
+    width: $product-main-slide-desktop-width;
+    height: $main-slide-desktop-slide-height;
+    display: block;
+    background-size: cover;
+  }
+}
