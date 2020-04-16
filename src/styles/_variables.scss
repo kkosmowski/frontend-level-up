@@ -1,6 +1,15 @@
 // layout variables
-$header-desktop-height: 9rem;
+$layout-desktop-max-width: 132.6rem;
 
+$nav-item-desktop-font-size: 1.5rem;
+
+$default-horizontal-button-padding: 0.6rem;
 
 // theme variables
-$banner-background-color: #d7d7d7;
+$primary-text-color: #151515;
+
+$main-header-background-color: #d7d7d7;
+
+$button-icon-hover-background: rgba($primary-text-color, 0.15);
+
+$anchor-color: $primary-text-color;

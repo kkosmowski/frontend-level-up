@@ -1,3 +1,4 @@
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
 @import 'fonts';
 
 html {
@@ -6,4 +7,8 @@ html {
 
 body {
   font-size: 1.6rem;
+}
+
+::selection {
+  background-color: rgba($primary-text-color, 0.25);
 }

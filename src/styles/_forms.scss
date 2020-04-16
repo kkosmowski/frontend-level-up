@@ -1,0 +1,23 @@
+.button {
+  padding: 0 $default-horizontal-button-padding;
+  margin: 0 2px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  outline-color: $primary-text-color;
+  outline-radius: 50%;
+  -webkit-outline-radius: 50%;
+  -moz-outline-radius: 50%;
+
+  &--icon {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    transition: 0.35s background-color 0.1s;
+    will-change: background-color;
+
+    &:hover {
+      background-color: $button-icon-hover-background;
+    }
+  }
+}
