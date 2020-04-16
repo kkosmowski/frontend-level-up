@@ -10,7 +10,7 @@ module.exports = {
   mode: 'development',
   entry: './src/index.js',
   output: {
-    filename: '[hash].js',
+    filename: 'index.js',
     path: path.resolve(__dirname, 'docs'),
   },
   module: {
