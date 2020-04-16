@@ -8,7 +8,7 @@
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Krzysztof Kosmowski",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -27,5 +27,8 @@
     "style-loader": "^1.1.4",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
-  }
+  },
+  "browserslist": [
+    "defaults"
+  ]
 }
