@@ -3,8 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const WatchTimePlugin = require('webpack-watch-time-plugin');
+
 
 module.exports = {
+  mode: 'development',
   entry: './src/index.js',
   output: {
     filename: '[hash].js',
@@ -62,13 +65,14 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html'
     }),
-    // new BrowserSyncPlugin({
-    //     host: "localhost",
-    //     port: 8000,
-    //     proxy: "http://localhost/",
-    // },
-    // {
-    //     reload: true
-    // }),
+    new WatchTimePlugin(),
+    new BrowserSyncPlugin({
+        host: 'localhost',
+        port: 3000,
+        server: { baseDir: ['docs'] }
+      },
+      {
+        reload: true
+      }),
   ],
 };
