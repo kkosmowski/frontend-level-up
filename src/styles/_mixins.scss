@@ -1,0 +1,14 @@
+@mixin _($justify-content, $align-items) { // base mixin for flex
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin flex($jc, $ai) {
+  display: flex;
+  @include _($jc, $ai);
+}
+
+@mixin inline-flex($jc, $ai) {
+  display: inline-flex;
+  @include _($jc, $ai);
+}

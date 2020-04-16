@@ -1,0 +1,15 @@
+.button {
+  cursor: pointer;
+
+  &--icon {
+    background-color: transparent;
+    border-radius: 50%;
+    border: 0;
+    transition: 0.35s background-color 0.1s;
+    will-change: background-color;
+
+    &:hover {
+      background-color: $button-icon-hover-background;
+    }
+  }
+}

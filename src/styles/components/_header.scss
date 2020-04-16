@@ -1,0 +1,36 @@
+.header {
+  width: 100%;
+  @include flex(center, flex-start);
+  height: $main-header-desktop-height;
+
+  &__wrapper {
+    width: 100%;
+    max-width: $layout-desktop-max-width;
+    height: $main-nav-desktop-height;
+    @include flex(space-between, center);
+    margin: 0 1rem;
+  }
+
+  .main-nav,
+  &__controls {
+    flex: 1;
+  }
+
+  &__logo {
+    width: 11.7rem;
+    height: 2.2rem;
+    object-fit: contain;
+  }
+
+  &__controls {
+    @include flex(flex-end, center);
+  }
+
+  &__user-button {
+    margin-right: 1.5rem;
+  }
+}
+
+.main-header {
+  background: $main-header-background-color url('//via.placeholder.com/1920x550.png') no-repeat center / cover;
+}
