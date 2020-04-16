@@ -35,6 +35,7 @@ const handleSlider = () => {
   const move = slide.getBoundingClientRect().width + parseInt(window.getComputedStyle(slide).marginRight);
 
   mainSliderSlides.style.left = '0';
+  sliderPrevButton.disabled = true;
 
   mainSlider.addEventListener('click', (e) => {
     const maxMove = mainSliderSlides.getBoundingClientRect().width - mainSliderContainer.getBoundingClientRect().width;
@@ -44,6 +45,15 @@ const handleSlider = () => {
     }
     else if (e.target === sliderNextButton && parseInt(mainSliderSlides.style.left) < maxMove) {
       mainSliderSlides.style.left = Math.max(parseInt(mainSliderSlides.style.left) - move, -maxMove) + 'px';
+    }
+
+    if (parseInt(mainSliderSlides.style.left) === 0) {
+      sliderPrevButton.disabled = true;
+    } else if (parseInt(mainSliderSlides.style.left) === -maxMove) {
+      sliderNextButton.disabled = true;
+    } else {
+      sliderPrevButton.disabled = false;
+      sliderNextButton.disabled = false;
     }
   });
 };

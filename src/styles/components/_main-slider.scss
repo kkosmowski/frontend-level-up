@@ -7,12 +7,30 @@ $main-slider-button-size: 4.8rem;
   background-color: $accents-color;
 
   &__button {
+    $button-color: #fff;
+    $button-border-size: 0.2rem;
     width: $main-slider-button-size;
     height: $main-slider-button-size;
     font-size: 2rem;
     line-height: 1;
-    border: 2px solid;
-    color: #fff;
+    border: $button-border-size solid $button-color;
+    color: $button-color;
+    background: linear-gradient(0deg, $button-color 0%, $button-color 100%) no-repeat 0 0 / 0 100%;
+    transition: 0.25s all 0.1s ease-in-out;
+
+    &--prev {
+      background-position: 100% 0;
+    }
+
+    &:not(:disabled):hover {
+      background-size: 100% 100%;
+      color: $accents-color;
+      font-weight: 700;
+    }
+
+    &:disabled {
+      background-color: rgba($primary-text-color, 0.375);
+    }
   }
 
   &__container {
