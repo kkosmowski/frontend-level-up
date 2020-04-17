@@ -31,6 +31,12 @@
   }
 }
 
+@mixin media-desktop() {
+  @media (min-width: 1000px) and (pointer: fine) {
+    @content;
+  }
+}
+
 @mixin media-desktop-xs() {
   @media (max-width: 1024px) and (pointer: fine) {
     @content;

@@ -1,5 +1,5 @@
 $product-main-slide-desktop-width: 26.8rem;
-
+$product-main-slide-mobile-width: 24rem;
 .product {
 
   &.main-slider__slide {
@@ -8,6 +8,11 @@ $product-main-slide-desktop-width: 26.8rem;
     @include flex(flex-start, flex-end);
     padding: 2rem;
     background-size: cover;
+
+    @include media-mobile() {
+      width: $product-main-slide-mobile-width;
+      height: $main-slide-mobile-slide-height;
+    }
   }
 
   &__details {

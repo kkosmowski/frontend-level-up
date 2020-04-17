@@ -2,13 +2,16 @@ import './styles/style.scss';
 import Logo from './assets/images/logo-zonex.svg';
 import SLIDES from './assets/slider-products';
 
+const isDesktop = matchMedia('(min-width: 1000px) and (pointer: fine').matches;
+const isTablet = matchMedia('(min-width: 600px) and (max-width: 1199px) and (pointer: coarse').matches;
+const isMobile = matchMedia('(max-width: 599px) and (pointer: coarse').matches;
+
 const renderLogo = () => {
   document.querySelector('.header__logo').src = Logo;
 };
 
 const renderBackgroundsDependingOnDevice = () => {
   // optimize assets depending on whether the device is a mobile or desktop
-  const isMobile = window.innerWidth < 600;
 
   document.querySelector('.main-header').classList.add(isMobile ? 'mobile' : 'desktop');
 };
@@ -31,31 +34,33 @@ const handleSlider = () => {
 
   createSlider(mainSliderSlides);
 
-  const slide = document.querySelector('.main-slider__slide');
-  const move = slide.getBoundingClientRect().width + parseInt(window.getComputedStyle(slide).marginRight);
+  if (isDesktop) {
+    const slide = document.querySelector('.main-slider__slide');
+    const move = slide.getBoundingClientRect().width + parseInt(window.getComputedStyle(slide).marginRight);
 
-  mainSliderSlides.style.left = '0';
-  sliderPrevButton.disabled = true;
+    mainSliderSlides.style.left = '0';
+    sliderPrevButton.disabled = true;
 
-  mainSlider.addEventListener('click', (e) => {
-    const maxMove = mainSliderSlides.getBoundingClientRect().width - mainSliderContainer.getBoundingClientRect().width;
+    mainSlider.addEventListener('click', (e) => {
+      const maxMove = mainSliderSlides.getBoundingClientRect().width - mainSliderContainer.getBoundingClientRect().width;
 
-    if (e.target === sliderPrevButton && parseInt(mainSliderSlides.style.left) < 0) {
-      mainSliderSlides.style.left = Math.min(parseInt(mainSliderSlides.style.left) + move, 0) + 'px';
-    }
-    else if (e.target === sliderNextButton && parseInt(mainSliderSlides.style.left) < maxMove) {
-      mainSliderSlides.style.left = Math.max(parseInt(mainSliderSlides.style.left) - move, -maxMove) + 'px';
-    }
+      if (e.target === sliderPrevButton && parseInt(mainSliderSlides.style.left) < 0) {
+        mainSliderSlides.style.left = Math.min(parseInt(mainSliderSlides.style.left) + move, 0) + 'px';
+      }
+      else if (e.target === sliderNextButton && parseInt(mainSliderSlides.style.left) < maxMove) {
+        mainSliderSlides.style.left = Math.max(parseInt(mainSliderSlides.style.left) - move, -maxMove) + 'px';
+      }
 
-    if (parseInt(mainSliderSlides.style.left) === 0) {
-      sliderPrevButton.disabled = true;
-    } else if (parseInt(mainSliderSlides.style.left) === -maxMove) {
-      sliderNextButton.disabled = true;
-    } else {
-      sliderPrevButton.disabled = false;
-      sliderNextButton.disabled = false;
-    }
-  });
+      if (parseInt(mainSliderSlides.style.left) === 0) {
+        sliderPrevButton.disabled = true;
+      } else if (parseInt(mainSliderSlides.style.left) === -maxMove) {
+        sliderNextButton.disabled = true;
+      } else {
+        sliderPrevButton.disabled = false;
+        sliderNextButton.disabled = false;
+      }
+    });
+  }
 };
 
 const createSlider = (slides) => {
