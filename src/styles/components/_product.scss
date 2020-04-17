@@ -1,0 +1,37 @@
+$product-main-slide-desktop-width: 26.8rem;
+$product-main-slide-mobile-width: 24rem;
+.product {
+
+  &.main-slider__slide {
+    width: $product-main-slide-desktop-width;
+    height: $main-slide-desktop-slide-height;
+    @include flex(flex-start, flex-end);
+    padding: 2rem;
+    background-size: cover;
+
+    @include media-mobile() {
+      width: $product-main-slide-mobile-width;
+      height: $main-slide-mobile-slide-height;
+    }
+  }
+
+  &__details {
+    @include flex(flex-start, flex-start);
+    flex-direction: column;
+    font-size: 1.3rem;
+  }
+
+  &__name {
+    color: $secondary-text-color;
+  }
+
+  &__price {
+    font-weight: 700;
+  }
+
+  &__previous-price {
+    text-decoration: line-through;
+    opacity: 0.25;
+    margin-right: 0.5rem;
+  }
+}

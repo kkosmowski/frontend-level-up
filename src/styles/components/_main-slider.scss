@@ -1,0 +1,91 @@
+$main-slider-button-size: 4.8rem;
+
+.main-slider {
+  width: 100%;
+  @include flex(space-between, center);
+  padding: 5rem 12.5rem;
+  background-color: $accents-color;
+
+  &__button {
+    $button-color: #fff;
+    $button-border-size: 0.2rem;
+    width: $main-slider-button-size;
+    height: $main-slider-button-size;
+    font-size: 2rem;
+    line-height: 1;
+    border: $button-border-size solid $button-color;
+    color: $button-color;
+    background: linear-gradient(0deg, $button-color 0%, $button-color 100%) no-repeat 0 0 / 0 100%;
+    transition: 0.25s all 0.1s ease-in-out;
+
+    &--prev {
+      margin-right: 2rem;
+      background-position: 100% 0;
+    }
+
+    &--next {
+      margin-left: 2rem;
+    }
+
+    &:not(:disabled):hover {
+      background-size: 100% 100%;
+      color: $accents-color;
+      font-weight: 700;
+    }
+
+    &:disabled {
+      background-color: rgba($primary-text-color, 0.375);
+    }
+  }
+
+  &__container {
+    position: relative;
+    width: 100%;
+    max-width: $layout-desktop-max-width;
+    overflow: hidden;
+    height: $main-slide-desktop-slide-height;
+  }
+
+  &__slides {
+    position: absolute;
+    left: 0;
+    top: 0;
+    @include flex(flex-start, stretch);
+    transition: 0.25s left ease-in-out;
+    will-change: left;
+  }
+
+  &__slide {
+    &:not(:last-child) {
+      margin-right: 3rem;
+    }
+  }
+}
+
+@include media-tablet-down() {
+  .main-slider {
+    padding: 5rem 0 2rem;
+
+    &__container {
+      overflow-x: auto;
+      height: $main-slide-desktop-slide-height + 2rem;
+    }
+
+    &__button {
+      display: none;
+    }
+    &__slides {
+      padding: 0 3rem;
+    }
+  }
+}
+
+@include media-mobile() {
+  .main-slider {
+
+
+    &__slides {
+      padding: 0 1.5rem;
+    }
+  }
+}
