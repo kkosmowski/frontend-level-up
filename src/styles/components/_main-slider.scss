@@ -19,7 +19,12 @@ $main-slider-button-size: 4.8rem;
     transition: 0.25s all 0.1s ease-in-out;
 
     &--prev {
+      margin-right: 2rem;
       background-position: 100% 0;
+    }
+
+    &--next {
+      margin-left: 2rem;
     }
 
     &:not(:disabled):hover {

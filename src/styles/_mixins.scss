@@ -14,19 +14,19 @@
 }
 
 @mixin media-mobile() {
-  @media (max-width: 599px) and (pointer: coarse) {
+  @media (max-width: 599px) {
     @content;
   }
 }
 
 @mixin media-tablet-down() {
-  @media (max-width: 1199px) and (pointer: coarse) {
+  @media (max-width: 1024px) {
     @content;
   }
 }
 
 @mixin media-tablet() {
-  @media (min-width: 600px) and (max-width: 1199px) and (pointer: coarse) {
+  @media (min-width: 600px) and (max-width: 1024px)  {
     @content;
   }
 }
