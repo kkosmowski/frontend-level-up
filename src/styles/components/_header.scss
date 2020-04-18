@@ -62,7 +62,7 @@ $logo-mobile-height: 1.8rem;
   }
 }
 
-@include media-desktop-xs() {
+@include media-desktop-xs-down() {
   .header {
     &__mobile-menu-button {
       display: inline-block;

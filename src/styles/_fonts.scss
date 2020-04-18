@@ -1,5 +1,12 @@
 @font-face {
   font-family: 'Jost';
+  src: url('../assets/fonts/jost/Jost-400-Book.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Jost';
   src: url('../assets/fonts/jost/Jost-500-Medium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;

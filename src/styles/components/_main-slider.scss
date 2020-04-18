@@ -62,6 +62,12 @@ $main-slider-button-size: 4.8rem;
   }
 }
 
+@include media-desktop-md-down() {
+  .main-slider {
+    padding: 5rem;
+  }
+}
+
 @include media-tablet-down() {
   .main-slider {
     padding: 5rem 0 2rem;

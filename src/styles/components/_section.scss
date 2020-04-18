@@ -1,0 +1,147 @@
+.section {
+  width: 100%;
+  max-width: $layout-desktop-max-width;
+  @include flex(flex-start, center);
+  flex-direction: column;
+  padding-top: 10rem;
+
+  &__title {
+    padding-top: 1rem;
+    font-size: 4.8rem;
+    line-height: 1;
+    font-weight: 500;
+
+    + .section__content {
+      margin-top: 10rem;
+    }
+  }
+
+  &__grid {
+    width: 100%;
+    @include flex(flex-start, flex-start);
+
+    &-4-columns {
+      flex-wrap: wrap;
+
+      @include media-desktop-sm-up() {
+        > * {
+          $gap: 3rem;
+          width: calc(25% - 3/4 * #{$gap}); // 4 items with 3 gaps
+          margin: 0 $gap / 2;
+
+          &:nth-child(4n + 1) { // no left margin for first items in a row
+            margin-left: 0;
+          }
+
+          &:nth-child(4n + 4) { // no right margin for fourth items in a row
+            margin-right: 0;
+          }
+
+          &:nth-child(n + 5) {
+            margin-top: 5rem;
+          }
+        }
+      }
+    }
+  }
+
+  &__button {
+    margin-top: 7rem;
+  }
+}
+
+@include media-desktop-md-down() {
+  .section {
+    padding: 10rem 2rem 0;
+  }
+}
+
+@include media-desktop-xs() {
+  .section {
+    &__grid-4-columns {
+      > * {
+        $gap: 2rem;
+        width: calc(33.33% - 2/3 * #{$gap}); // 3 items with 2 gaps
+        margin: 0 $gap / 2;
+
+        &:nth-child(3n + 1) { // no left margin for first items in a row
+          margin-left: 0;
+        }
+
+        &:nth-child(3n + 3) { // no right margin for fourth items in a row
+          margin-right: 0;
+        }
+
+        &:nth-child(n + 4) {
+          margin-top: 3rem;
+        }
+      }
+    }
+  }
+}
+
+@include media-desktop-xxs() {
+  .section {
+    &__title {
+      font-size: 3.6rem;
+
+      + .section__content {
+        margin-top: 7rem;
+      }
+    }
+
+    &__grid-4-columns {
+      > * {
+        $gap: 2rem;
+        width: calc(50% - 1/2 * #{$gap}); // 3 items with 2 gaps
+        margin: 0 $gap / 2;
+
+        &:nth-child(2n + 1) { // no left margin for first items in a row
+          margin-left: 0;
+        }
+
+        &:nth-child(2n + 2) { // no right margin for fourth items in a row
+          margin-right: 0;
+        }
+
+        &:nth-child(n + 3) {
+          margin-top: 3rem;
+        }
+      }
+    }
+  }
+}
+
+@include media-mobile() {
+  .section {
+    padding: 5rem 1.5rem 0;
+
+    &__title {
+      font-size: 2.4rem;
+
+      + .section__content {
+        margin-top: 5.5rem;
+      }
+    }
+
+    &__grid-4-columns {
+      > * {
+        $gap: 1.5rem;
+        width: calc(50% - 1 / 2 * #{$gap}); // 2 items with 1 gap
+        margin: 0 $gap / 2;
+
+        &:nth-child(2n + 1) { // no left margin for first items in a row
+          margin-left: 0;
+        }
+
+        &:nth-child(2n + 2) { // no right margin for fourth items in a row
+          margin-right: 0;
+        }
+
+        &:nth-child(n + 3) {
+          margin-top: 3rem;
+        }
+      }
+    }
+  }
+}
