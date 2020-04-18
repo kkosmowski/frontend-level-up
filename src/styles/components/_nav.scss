@@ -33,7 +33,7 @@
   }
 }
 
-@include media-desktop-xs() {
+@include media-desktop-xs-down() {
   .main-nav {
     display: none;
   }
