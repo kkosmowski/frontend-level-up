@@ -1,0 +1,39 @@
+$products-collage-desktop-height: 63rem;
+
+.products-collage {
+  width: 100%;
+
+  &__grid {
+    height: $products-collage-desktop-height;
+    display: grid;
+    grid-template-columns: 54.7rem 38rem 38rem;
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
+
+  &__large-product {
+    grid-area: 1 / 1 / 3 / 2;
+  }
+
+  &__medium-product {
+    grid-area: 2 / 2 / 3 / 4;
+  }
+
+  &__small-product {
+    &--left {
+      grid-area: 1 / 2 / 2 / 3;
+    }
+
+    &--right {
+      grid-area: 1 / 3 / 2 / 4;
+    }
+  }
+
+  .product__buttons {
+    margin-top: 1rem;
+  }
+
+  .button--text {
+    text-transform: none;
+  }
+}
