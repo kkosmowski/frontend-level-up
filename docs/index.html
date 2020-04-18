@@ -1,1 +1,203 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Frontend LevelUP 2020</title></head><body><header class="header main-header"><div class="header__wrapper"><nav class="nav main-nav" role="navigation"><a href="#" class="nav__item nav__item--active">Home</a> <a href="#" class="nav__item">Shop</a> <a href="#" class="nav__item">Elements</a> <a href="#" class="nav__item">Blog</a> <a href="#" class="nav__item">Page</a></nav><button class="button header__mobile-menu-button" type="button"><i class="fas fa-bars"></i></button> <img class="header__logo" alt="Zonex Shop"><div class="header__controls"><button class="button button--icon header__user-button" type="button"><i class="fas fa-user"></i></button> <button class="button button--icon header__cart-button" type="button"><i class="fas fa-shopping-bag"></i></button> <i class="chip notifications-chip">3</i></div></div></header><div class="main-slider"><button class="button main-slider__button main-slider__button--prev">&#x2190;</button><div class="main-slider__container"><ul class="main-slider__slides"></ul></div><button class="button main-slider__button main-slider__button--next">&#x2192;</button></div><script src="index.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend LevelUP 2020</title>
+</head>
+<body>
+<header class="header main-header">
+  <div class="header__wrapper">
+    <nav class="nav main-nav" role="navigation">
+      <a href="#" class="nav__item nav__item--active">Home</a>
+      <a href="#" class="nav__item">Shop</a>
+      <a href="#" class="nav__item">Elements</a>
+      <a href="#" class="nav__item">Blog</a>
+      <a href="#" class="nav__item">Page</a>
+    </nav>
+    <button class="button header__mobile-menu-button" type="button">
+      <i class="fas fa-bars"></i>
+    </button>
+    <img class="header__logo" alt="Zonex Shop">
+    <div class="header__controls">
+      <button class="button button--icon header__user-button" type="button">
+        <i class="fas fa-user"></i>
+      </button>
+      <button class="button button--icon header__cart-button" type="button">
+        <i class="fas fa-shopping-bag"></i>
+      </button>
+      <i class="chip notifications-chip">3</i>
+    </div>
+  </div>
+</header>
+
+<div class="main-slider">
+  <button class="button main-slider__button main-slider__button--prev">&#x2190;</button>
+  <div class="main-slider__container">
+    <ul class="main-slider__slides"></ul>
+  </div>
+  <button class="button main-slider__button main-slider__button--next">&#x2192;</button>
+</div>
+<main class="wrapper">
+  <section class="section new-arrivals" id="new-arrivals">
+    <h2 class="section__title">New Arrivals</h2>
+    <div class="section__content section__grid section__grid-4-columns">
+      <div class="product new-arrivals__product">
+        <div class="product__image"></div>
+        <div class="product__details">
+          <span class="product__type">
+            <i class="fas fa-bolt"></i>
+            <span class="product__type-name">New</span>
+          </span>
+          <span class="product__name">Eye Mesh Boat Shoes</span>
+          <span class="product__price">$220.00</span>
+          <div class="product__buttons product__buttons--mobile-only">
+            <button type="button" class="button button--text product__select-options-button">Select options</button>
+            <div class="product__actions">
+              <button type="button" class="button button--icon product__favorite-button">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product new-arrivals__product">
+        <div class="product__image"></div>
+        <div class="product__details">
+          <span class="product__name">Azure Tote</span>
+          <span class="product__price">$290.00</span>
+          <div class="product__buttons product__buttons--mobile-only">
+            <button type="button" class="button button--text product__add-to-cart-button">Add to cart</button>
+            <div class="product__actions">
+              <button type="button" class="button button--icon product__favorite-button">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product new-arrivals__product">
+        <div class="product__image"></div>
+        <div class="product__details">
+          <span class="product__name">Blue Raincoat</span>
+          <div class="product__buttons">
+            <button type="button" class="button button--text product__add-to-cart-button">Add to cart</button>
+            <div class="product__actions">
+              <button type="button" class="button button--icon product__details-button">
+                <i class="fas fa-search"></i>
+              </button>
+              <button type="button" class="button button--icon product__favorite-button">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product new-arrivals__product">
+        <div class="product__image"></div>
+        <div class="product__details">
+          <span class="product__type">
+            <i class="fas fa-bullseye"></i>
+            <span class="product__type-name">Best seller</span>
+          </span>
+          <span class="product__name">Backpack with contrasting buckle</span>
+          <span class="product__price">$80.00 - $125.00</span>
+          <div class="product__buttons product__buttons--mobile-only">
+            <button type="button" class="button button--text product__add-to-cart-button">Add to cart</button>
+            <div class="product__actions">
+              <button type="button" class="button button--icon product__favorite-button">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product new-arrivals__product">
+        <div class="product__image"></div>
+        <div class="product__details">
+          <span class="product__type">
+            <i class="fas fa-bullseye"></i>
+            <span class="product__type-name">Best seller</span>
+          </span>
+          <span class="product__name">Shirt in organic cotton classic gingham</span>
+          <span class="product__price">$59.50</span>
+          <div class="product__buttons product__buttons--mobile-only">
+            <button type="button" class="button button--text product__add-to-cart-button">Add to cart</button>
+            <div class="product__actions">
+              <button type="button" class="button button--icon product__favorite-button">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product new-arrivals__product product--sale">
+        <div class="product__image"></div>
+        <div class="product__details">
+          <span class="product__type">
+            <i class="fas fa-fire-alt"></i>
+            <span class="product__type-name">Hot</span>
+          </span>
+          <span class="product__name">Tailored indigo jumpsuit</span>
+          <span class="product__price">$128.00 <span class="product__previous-price">$165.00</span></span>
+          <div class="product__buttons product__buttons--mobile-only">
+            <button type="button" class="button button--text product__add-to-cart-button">Add to cart</button>
+            <div class="product__actions">
+              <button type="button" class="button button--icon product__favorite-button">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product new-arrivals__product">
+        <div class="product__image"></div>
+        <div class="product__details">
+          <span class="product__type">
+            <i class="far fa-star"></i>
+            <span class="product__type-name">Top rate</span>
+          </span>
+          <span class="product__name">Triple stone drop earrings</span>
+          <span class="product__price">$49.50</span>
+          <div class="product__buttons product__buttons--mobile-only">
+            <button type="button" class="button button--text product__add-to-cart-button">Add to cart</button>
+            <div class="product__actions">
+              <button type="button" class="button button--icon product__favorite-button">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product new-arrivals__product">
+        <div class="product__image"></div>
+        <div class="product__details">
+          <span class="product__type">
+          <i class="fas fa-battery-quarter"></i>
+          <span class="product__type-name">Only a few left</span>
+          </span>
+          <span class="product__name">Backpack with contrasting buckle</span>
+          <span class="product__price">$158.00</span>
+          <div class="product__buttons product__buttons--mobile-only">
+            <button type="button" class="button button--text product__add-to-cart-button">Add to cart</button>
+            <div class="product__actions">
+              <button type="button" class="button button--icon product__favorite-button">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="button button--outlined section__button">All products</button>
+  </section>
+</main>
+<script src="index.js"></script></body>
+</html>
