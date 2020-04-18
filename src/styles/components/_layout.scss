@@ -1,0 +1,5 @@
+.wrapper {
+  width: 100%;
+  @include flex(flex-start, center);
+  flex-direction: column;
+}

@@ -5,9 +5,17 @@
   background-color: transparent;
   border: 0;
   outline-color: $primary-text-color;
-  outline-radius: 50%;
-  -webkit-outline-radius: 50%;
-  -moz-outline-radius: 50%;
+
+  &--text {
+    margin: 0;
+    padding: 0;
+    transition: 0.25s text-shadow ease-in-out;
+    will-change: text-shadow;
+
+    &:hover {
+      text-shadow: 0 0 8px rgba($primary-text-color, 0.4);
+    }
+  }
 
   &--icon {
     width: 2.6rem;
@@ -18,6 +26,36 @@
 
     &:hover {
       background-color: $button-icon-hover-background;
+    }
+  }
+
+  &--outlined {
+    position: relative;
+    border: 2px solid;
+    font-size: 1.3rem;
+    padding: 1.2rem 3.2rem;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -180%;
+      transform: skew(-30deg);
+      width: 150%;
+      background-color: currentColor;
+      opacity: 0.1;
+      height: 110%;
+      transition: 0.4s left 0.1s cubic-bezier(0.72, 0, 0.22, 1.74);
+      will-change: left;
+      z-index: -1;
+
+    }
+
+    &:hover {
+      &::before {
+        left: -80%;
+      }
     }
   }
 }

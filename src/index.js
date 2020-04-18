@@ -1,6 +1,6 @@
 import './styles/style.scss';
 import Logo from './assets/images/logo-zonex.svg';
-import SLIDES from './assets/slider-products';
+import SliderProducts from './assets/slider-products';
 
 const isDesktop = matchMedia('(min-width: 1000px) and (pointer: fine').matches;
 const isTablet = matchMedia('(min-width: 600px) and (max-width: 1199px) and (pointer: coarse').matches;
@@ -16,10 +16,10 @@ const renderBackgroundsDependingOnDevice = () => {
   document.querySelector('.main-header').classList.add(isMobile ? 'mobile' : 'desktop');
 };
 
-const renderProducts = () => {
-  [...document.querySelectorAll('.product')].map((product) => {
-    let { width, height } = product.getBoundingClientRect();
-    product.style.backgroundImage = `url(//via.placeholder.com/${ Math.floor(width) }x${ Math.floor(height) }.png)`
+const renderProductImages = () => {
+  [...document.querySelectorAll('.product__image')].map((productImage) => {
+    let { width, height } = productImage.getBoundingClientRect();
+    productImage.style.backgroundImage = `url(//via.placeholder.com/${ Math.floor(width) }x${ Math.floor(height) }.png)`
   });
 };
 
@@ -64,11 +64,14 @@ const handleSlider = () => {
 };
 
 const createSlider = (slides) => {
-  const format = (number) => `$${number.toFixed(2)}`;
+  const format = (number) => `$${ number.toFixed(2) }`;
 
-  SLIDES.map((item) => {
+  SliderProducts.map((item) => {
     const slide = document.createElement('li');
     slide.classList.add('main-slider__slide', 'product');
+
+    const image = document.createElement('div');
+    image.classList.add('product__image');
 
     const details = document.createElement('p');
     details.classList.add('product__details');
@@ -93,13 +96,13 @@ const createSlider = (slides) => {
 
     details.appendChild(name);
     details.appendChild(price);
+    slide.appendChild(image);
     slide.appendChild(details);
     slides.appendChild(slide);
   });
-
 };
 
 renderLogo();
 renderBackgroundsDependingOnDevice();
 handleSlider();
-renderProducts();
+renderProductImages();
