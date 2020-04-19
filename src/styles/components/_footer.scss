@@ -1,0 +1,85 @@
+$twitter-color: #1da1f2;
+$facebook-color: #4267b2;
+$instagram-color: #e1306c;
+$pinterest-color: #c8232c;
+
+
+.footer {
+  width: 100%;
+  @include flex(center, center);
+  margin-top: 9.5rem;
+
+  &__wrapper {
+    width: 100%;
+    max-width: $layout-desktop-max-width;
+    @include flex(flex-start, stretch);
+    flex-direction: column;
+    padding: 3.8rem 0 2rem;
+    margin: 0 1rem;
+    border-top: 1px solid #eee;
+    font-size: 1.3rem;
+    color: $primary-text-color;
+  }
+
+  &__row {
+    @include flex(space-between, center);
+
+    + .footer__row {
+      margin-top: 5.5rem;
+    }
+
+    > * {
+      flex: 1;
+      @include flex(center, center);
+
+      &:first-child {
+        justify-content: flex-start;
+      }
+
+      &:last-child {
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  &__social-item {
+    font-size: 1.8rem;
+    transition: 0.15s all ease-in-out;
+    will-change: color;
+
+    &:not(:last-child) {
+      margin-right: 3rem;
+    }
+
+    &:hover {
+      text-shadow: 0 0 20px;
+    }
+
+    &--twitter:hover {
+      color: $twitter-color;
+    }
+
+    &--facebook:hover {
+      color: $facebook-color;
+    }
+
+    &--instagram:hover {
+      color: $instagram-color;
+    }
+
+    &--pinterest:hover {
+      color: $pinterest-color;
+    }
+  }
+
+  &__nav-item {
+    &:not(:last-child) {
+      margin-right: 5rem;
+    }
+  }
+
+  &__controls {
+    color: $tertiary-text-color;
+    font-weight: 400;
+  }
+}

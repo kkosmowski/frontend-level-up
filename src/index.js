@@ -1,5 +1,6 @@
 import './styles/style.scss';
 import Logo from './assets/images/logo-zonex.svg';
+import PaymentProviders from './assets/images/payment.png';
 import SliderProducts from './assets/slider-products';
 
 const isDesktop = matchMedia('(min-width: 1000px) and (pointer: fine').matches;
@@ -102,7 +103,12 @@ const createSlider = (slides) => {
   });
 };
 
+const renderPaymentProviders = () => {
+  document.querySelector('.footer__payment-providers > img').src = PaymentProviders;
+};
+
 renderLogo();
 renderBackgroundsDependingOnDevice();
 handleSlider();
 renderProductImages();
+renderPaymentProviders();

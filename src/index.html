@@ -247,7 +247,7 @@
         <p class="section__subtitle">Join our list and get 15% off your first purchase!</p>
         <div class="section__content">
             <form action="#" method="post">
-                <div class="form-field newsletter__form-field">
+                <div class="form-field form-field--relative newsletter__form-field">
                     <input type="email" placeholder=" " id="email" name="email-address" required class="input input--with-button">
                     <label for="email">Email Address</label>
                     <span class="input-warning">Invalid email address</span>
@@ -258,5 +258,59 @@
         </div>
     </section>
 </main>
+<footer class="footer">
+  <div class="footer__wrapper">
+
+    <div class="footer__row">
+      <div class="footer__social">
+        <a href="#" class="footer__social-item footer__social-item--twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="footer__social-item footer__social-item--facebook">
+          <i class="fab fa-facebook-square"></i>
+        </a>
+        <a href="#" class="footer__social-item footer__social-item--instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" class="footer__social-item footer__social-item--pinterest">
+          <i class="fab fa-pinterest-p"></i>
+        </a>
+      </div>
+      <nav class="footer__nav nav">
+        <a href="#" class="footer__nav-item">Returns Policy</a>
+        <a href="#" class="footer__nav-item">Privacy Policy</a>
+        <a href="#" class="footer__nav-item">Privacy Policy</a>
+      </nav>
+      <div class="footer__controls">
+        <div class="form-field">
+          <label for="currency">Currency</label>
+          <select name="currency" id="currency">
+            <option>USD</option>
+            <option>PLN</option>
+            <option>EUR</option>
+            <option>JPY</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="language">Language</label>
+          <select name="language" id="language">
+            <option>Engliish</option>
+            <option>Polish</option>
+            <option>Spanish</option>
+            <option>German</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="footer__row">
+        <span class="footer__copyright">
+          ©2019 Zonex All rights reserved
+        </span>
+      <div class="footer__payment-providers">
+        <img alt="Accepted payment providers: mastercard, visa, paypal">
+      </div>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

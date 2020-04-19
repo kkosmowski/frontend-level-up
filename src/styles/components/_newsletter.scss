@@ -2,7 +2,6 @@ $newsletter-input-desktop-width: 65rem;
 
 .section + .newsletter {
   padding-top: 8.6rem;
-  padding-bottom: 40rem;
 
   @include media-mobile() {
     padding-top: 4rem;
@@ -16,14 +15,21 @@ $newsletter-input-desktop-width: 65rem;
 
   &__form-field {
     width: $newsletter-input-desktop-width;
+    height: 6rem;
 
     .input {
       width: 100%;
+    }
+
+    > .button,
+    > .input {
+      height: 4.2rem;
     }
   }
 
   &__no-spam-assurance {
     font-size: 1.3rem;
+    color: $secondary-text-color;
   }
 
   @include media-desktop-xxs() {

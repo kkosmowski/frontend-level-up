@@ -62,19 +62,24 @@
 
 $input-font-size: 13px;
 .form-field {
-  position: relative;
-  height: 6rem;
   @include flex(flex-start, flex-start);
 
-  > .input-warning,
-  > label {
-    position: absolute;
+  &--relative {
+    position: relative;
+
+    > .input-warning,
+    > label {
+      position: absolute;
+    }
+
+    > .button,
+    > .input {
+      position: relative;
+    }
   }
 
   > .button,
   > .input {
-    position: relative;
-    height: 4.2rem;
     border-width: 0 0 2px;
     border-style: solid;
     border-color: $primary-text-color;

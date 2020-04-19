@@ -3,6 +3,10 @@
   @include flex(flex-start, center);
 }
 
+.footer__nav {
+  @include flex(center, center);
+}
+
 .nav__item {
   color: $anchor-color;
   font-size: $nav-item-desktop-font-size;
