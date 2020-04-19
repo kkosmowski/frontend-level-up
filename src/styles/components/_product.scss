@@ -116,6 +116,7 @@ $product-new-arrival-mobile-height: 35rem;
   &__image {
     width: 100%;
     flex: 1;
+    background: no-repeat center / cover;
   }
 
   &__details {
@@ -207,6 +208,18 @@ $product-new-arrival-mobile-height: 35rem;
     &__name {
       font-size: 2.5rem;
       line-height: 1.2;
+    }
+
+    @include media-desktop-sm-down() {
+      &__details {
+        padding: 3rem 2.6rem;
+      }
+    }
+
+    @include media-mobile() {
+      &__details {
+        padding: 3.4rem 2.8rem;
+      }
     }
   }
 
