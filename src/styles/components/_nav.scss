@@ -3,11 +3,22 @@
   @include flex(flex-start, center);
 }
 
-.footer__nav {
-  @include flex(center, center);
+.footer {
+  &__nav {
+    @include flex(center, center);
+
+    &-item {
+      @extend .underline;
+
+      &:not(:last-child) {
+        margin-right: 5rem;
+      }
+    }
+  }
 }
 
 .nav__item {
+  @extend .underline;
   color: $anchor-color;
   font-size: $nav-item-desktop-font-size;
   text-decoration: none;
@@ -17,14 +28,25 @@
   }
 }
 
-@include media-tablet-down() {
+@include media-desktop-xs-down-and-mobile() {
   .main-nav {
     display: none;
   }
+
+  .footer__nav {
+    flex-wrap: wrap;
+    margin-bottom: -0.5rem;
+
+    &-item {
+      margin-bottom: 0.5rem;
+    }
+  }
 }
 
-@include media-desktop-xs-down() {
-  .main-nav {
-    display: none;
+@include media-mobile() {
+  .footer__nav-item {
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
   }
 }

@@ -61,8 +61,20 @@
   }
 }
 
+@mixin media-desktop-xs-down-and-mobile() {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
 @mixin media-desktop-xs() {
   @media (min-width: 881px) and (max-width: 1024px) and (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin media-desktop-xxs-down-and-mobile() {
+  @media (max-width: 880px) {
     @content;
   }
 }

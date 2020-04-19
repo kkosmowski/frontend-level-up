@@ -3,6 +3,7 @@ $facebook-color: #4267b2;
 $instagram-color: #e1306c;
 $pinterest-color: #c8232c;
 
+$footer-border: 1px solid #eee;
 
 .footer {
   width: 100%;
@@ -16,7 +17,7 @@ $pinterest-color: #c8232c;
     flex-direction: column;
     padding: 3.8rem 0 2rem;
     margin: 0 1rem;
-    border-top: 1px solid #eee;
+    border-top: $footer-border;
     font-size: 1.3rem;
     color: $primary-text-color;
   }
@@ -72,14 +73,63 @@ $pinterest-color: #c8232c;
     }
   }
 
-  &__nav-item {
-    &:not(:last-child) {
-      margin-right: 5rem;
-    }
-  }
-
   &__controls {
     color: $tertiary-text-color;
     font-weight: 400;
+  }
+
+  @include media-desktop-md-down() {
+    &__nav {
+      flex: 2;
+    }
+  }
+
+  @include media-desktop-xs-down() {
+    .footer__row {
+      &:first-child {
+        flex-direction: column;
+
+        > * + * {
+          margin-top: 2.5rem;
+        }
+      }
+    }
+  }
+
+  @include media-desktop-xs-down-and-mobile() {
+    &__wrapper {
+      margin: 0 2rem;
+    }
+
+    &__row {
+      + .footer__row {
+        padding-top: 1.5rem;
+        margin-top: 3.5rem;
+        border-top: $footer-border;
+      }
+    }
+  }
+
+  @include media-mobile() {
+    margin-top: 3rem;
+
+    &__wrapper {
+      margin: 0 1.5rem;
+    }
+
+    &__row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer__row {
+      > * {
+        justify-content: flex-start;
+
+        + * {
+          margin-top: 2.5rem;
+        }
+      }
+    }
   }
 }
