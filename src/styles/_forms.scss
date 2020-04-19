@@ -12,7 +12,7 @@
     transition: 0.25s text-shadow ease-in-out;
     will-change: text-shadow;
 
-    &:hover {
+    &:hover:not(.underline) {
       text-shadow: 0 0 8px rgba($primary-text-color, 0.4);
     }
   }

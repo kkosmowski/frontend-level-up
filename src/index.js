@@ -68,7 +68,7 @@ const createSlider = (slides) => {
 
   SliderProducts.map((item) => {
     const slide = document.createElement('li');
-    slide.classList.add('main-slider__slide', 'product');
+    slide.classList.add('main-slider__slide', 'product', 'product--details-on-image');
 
     const image = document.createElement('div');
     image.classList.add('product__image');

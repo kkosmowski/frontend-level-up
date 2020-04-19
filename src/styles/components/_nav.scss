@@ -13,20 +13,6 @@
   }
 }
 
-.main-nav {
-  .nav__item {
-    padding-bottom: 0.2rem;
-    background: linear-gradient(0deg, currentColor 0%, currentColor 100%) no-repeat 0 100% / 0 2px;
-    transition: 0.35s background-size 0.1s ease-in-out;
-    will-change: background-size;
-
-    &--active,
-    &:hover {
-      background-size: 100% 2px;
-    }
-  }
-}
-
 @include media-tablet-down() {
   .main-nav {
     display: none;

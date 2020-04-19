@@ -1,0 +1,69 @@
+[
+  {
+    "type": "new",
+    "name": "Eye Mesh Boat Shoes",
+    "price": 220,
+    "oldPrice": null,
+    "addToCart": false,
+    "options": false
+  },
+  {
+    "type": "",
+    "name": "Azure Tote",
+    "price": 290,
+    "oldPrice": null,
+    "addToCart": false,
+    "options": false
+  },
+  {
+    "type": "",
+    "name": "Blue Raincoat",
+    "price": null,
+    "oldPrice": null,
+    "addToCart": true,
+    "options": true
+  },
+  {
+    "type": "bestseller",
+    "name": "Backpack with contrasting buckle",
+    "price": {
+      "from": 80,
+      "to": 125
+    },
+    "oldPrice": null,
+    "addToCart": false,
+    "options": false
+  },
+  {
+    "type": "bestseller",
+    "name": "Shirt in organic cotton classic gingham",
+    "price": 59.5,
+    "oldPrice": null,
+    "addToCart": false,
+    "options": false
+  },
+  {
+    "type": "hot",
+    "name": "Tailored indigo jumpsuit\n",
+    "price": 128,
+    "oldPrice": 165,
+    "addToCart": false,
+    "options": false
+  },
+  {
+    "type": "top-rate",
+    "name": "Triple stone drop earrings",
+    "price": 49.5,
+    "oldPrice": null,
+    "addToCart": false,
+    "options": false
+  },
+  {
+    "type": "few-left",
+    "name": "Backpack with contrasting buckle",
+    "price": 158,
+    "oldPrice": null,
+    "addToCart": false,
+    "options": false
+  }
+]
