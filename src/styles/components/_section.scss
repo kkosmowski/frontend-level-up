@@ -14,6 +14,14 @@
     + .section__content {
       margin-top: 10rem;
     }
+
+    &--small {
+      font-size: 3rem;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 2.8rem;
   }
 
   &__grid {
@@ -82,7 +90,7 @@
 
 @include media-desktop-xxs() {
   .section {
-    &__title {
+    &__title:not(&__title--small) {
       font-size: 3.6rem;
 
       + .section__content {
@@ -122,6 +130,15 @@
       + .section__content {
         margin-top: 5.5rem;
       }
+
+      &--small {
+        text-transform: uppercase;
+        font-size: 1.7rem;
+      }
+    }
+
+    &__subtitle {
+      font-size: 1.3rem;
     }
 
     &__grid-4-columns {

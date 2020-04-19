@@ -1,0 +1,46 @@
+$newsletter-input-desktop-width: 65rem;
+
+.section + .newsletter {
+  padding-top: 8.6rem;
+  padding-bottom: 40rem;
+
+  @include media-mobile() {
+    padding-top: 4rem;
+  }
+}
+
+.newsletter {
+  .section__content {
+    margin-top: 5rem;
+  }
+
+  &__form-field {
+    width: $newsletter-input-desktop-width;
+
+    .input {
+      width: 100%;
+    }
+  }
+
+  &__no-spam-assurance {
+    font-size: 1.3rem;
+  }
+
+  @include media-desktop-xxs() {
+    &__form-field,
+    .section__content {
+      width: 100%;
+    }
+  }
+
+  @include media-mobile() {
+    .section__content {
+      width: 100%;
+      margin-top: 3rem;
+    }
+
+    &__form-field {
+      width: 100%;
+    }
+  }
+}

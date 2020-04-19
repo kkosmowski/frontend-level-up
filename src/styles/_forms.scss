@@ -59,3 +59,109 @@
     }
   }
 }
+
+$input-font-size: 13px;
+.form-field {
+  position: relative;
+  height: 6rem;
+  @include flex(flex-start, flex-start);
+
+  > .input-warning,
+  > label {
+    position: absolute;
+  }
+
+  > .button,
+  > .input {
+    position: relative;
+    height: 4.2rem;
+    border-width: 0 0 2px;
+    border-style: solid;
+    border-color: $primary-text-color;
+    font-size: $input-font-size;
+  }
+}
+
+.input {
+  &:not([type='submit']):not([type='button']):not([type='reset']) {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #fff;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+    outline: none; // outline removed, but other indicators will be present
+
+    + label {
+      min-width: 10rem;
+      width: 10%;
+      line-height: 4.2rem;
+      top: 0;
+      font-size: $input-font-size;
+      font-weight: 400;
+      pointer-events: none;
+      border-bottom: 1px solid transparent;
+      letter-spacing: 0.5px;
+      transition: 0.35s all ease-in-out;
+    }
+
+    ~ .input-warning {
+      bottom: 0;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: $warning-color;
+      pointer-events: none;
+      opacity: 0;
+      transition: 0.25s opacity ease-in-out;
+    }
+
+    &:invalid:not(:placeholder-shown) {
+      border-bottom-color: $warning-color;
+
+      ~ .button {
+        border-bottom-color: $warning-color;
+        color: $warning-color;
+        pointer-events: none;
+      }
+
+      ~ .input-warning {
+        opacity: 1;
+      }
+    }
+
+    &:active,
+    &:focus,
+    &:not(:placeholder-shown) {
+      border-bottom-width: 4px;
+
+      + label {
+        top: -0.6rem;
+        line-height: 1.1rem;
+        border-color: $primary-text-color;
+        font-size: 1.1rem;
+        opacity: 0.75;
+      }
+
+      ~ .button {
+        border-bottom-width: 4px;
+
+      }
+    }
+
+    @include media-mobile() {
+      &:active,
+      &:focus,
+      &:not(:placeholder-shown) {
+        + label {
+          top: -1.2rem;
+        }
+      }
+    }
+  }
+
+  &.input--with-button {
+    ~ .button {
+      right: 0;
+      padding: 0 1.5rem;
+    }
+  }
+}

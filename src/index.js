@@ -4,7 +4,7 @@ import SliderProducts from './assets/slider-products';
 
 const isDesktop = matchMedia('(min-width: 1000px) and (pointer: fine').matches;
 const isTablet = matchMedia('(min-width: 600px) and (max-width: 1199px) and (pointer: coarse').matches;
-const isMobile = matchMedia('(max-width: 599px) and (pointer: coarse').matches;
+const isMobile = matchMedia('(max-width: 599px)').matches;
 
 const renderLogo = () => {
   document.querySelector('.header__logo').src = Logo;
