@@ -6,6 +6,21 @@ import SliderProducts from './assets/slider-products';
 const isDesktop = matchMedia('(min-width: 1000px) and (pointer: fine').matches;
 const isMobile = matchMedia('(max-width: 599px)').matches;
 
+function debounce(f, wait, immediate) { // debounce function to avoid too many event listener function executions
+  let timeout;
+  return function() {
+    const context = this, args = arguments;
+    const later = function() {
+      timeout = null;
+      if (!immediate) f.apply(context, args);
+    };
+    const callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) f.apply(context, args);
+  };
+}
+
 const renderLogo = () => {
   document.querySelector('.header__logo > img').src = Logo;
 };
@@ -109,19 +124,18 @@ const renderPaymentProviders = () => {
   document.querySelector('.footer__payment-providers > img').src = PaymentProviders;
 };
 
-const handleFooterSelects = (overlay) => {
+const handleFooterSelects = (header, overlay, mobileMenuButton) => {
   const customSelects = document.querySelectorAll('div.select');
 
-  overlay.addEventListener('click', (e) => {
+  [header, overlay, mobileMenuButton].map((item) => item.addEventListener('click', () => {
     // custom blur
-    e.stopPropagation();
 
     [...customSelects].map((select) => {
       select.querySelector('input[type=checkbox]').checked = false;
     });
 
-    overlay.classList.remove('active');
-  });
+    overlay.classList.remove('active', 'overlay--select');
+  }));
 
   [...customSelects].map((select) => {
     const checkbox = select.querySelector('input[type=checkbox]');
@@ -130,14 +144,14 @@ const handleFooterSelects = (overlay) => {
 
     checkbox.addEventListener('change', (e) => {
       e.stopPropagation();
-      if (checkbox.checked) overlay.classList.add('active');
+      if (checkbox.checked) overlay.classList.add('overlay--select', 'active');
     });
 
     select.addEventListener('click', (e) => {
       if (e.target.name === name) {
         e.target.checked = true;
         checkbox.checked = false;
-        overlay.classList.remove('active');
+        overlay.classList.remove('active', 'overlay--select');
 
         placeholder.textContent = e.target.value;
         [...select.querySelectorAll('.option')].map((option) => option.classList.remove('current'));
@@ -152,7 +166,8 @@ const handleScroll = (header) => {
   const mobileMenu = document.querySelector('.main-nav--mobile');
   const goToTheTop = document.querySelector('.go-to-the-top');
   const height = window.innerHeight;
-  window.addEventListener('scroll', () => {
+
+  const checkScrollY = debounce(() => {
     window.scrollY > height
       ? goToTheTop.classList.add('sticky')
       : goToTheTop.classList.remove('sticky');
@@ -164,12 +179,13 @@ const handleScroll = (header) => {
       headerBar.classList.remove('scrolled');
       mobileMenu.classList.remove('scrolled');
     }
-  });
+  }, 30);
+
+  window.addEventListener('scroll', checkScrollY);
 };
 
-const handleMobileMenu = (header, overlay) => {
+const handleMobileMenu = (header, overlay, mobileMenuButton) => {
   const headerWrapper = document.querySelector('.header__wrapper');
-  const mobileMenuButton = document.querySelector('.header__mobile-menu-button');
   const desktopMenu = document.querySelector('.main-nav');
   const mobileMenu = desktopMenu.cloneNode(true);
   let mobileMenuVisible = false;
@@ -180,19 +196,19 @@ const handleMobileMenu = (header, overlay) => {
 
   const showMenu = () => {
     mobileMenu.classList.add('visible');
-    overlay.classList.add('active', 'visible');
+    overlay.classList.add('overlay--nav', 'active', 'visible');
   };
 
   const hideMenu = () => {
     mobileMenu.classList.remove('visible');
-    overlay.classList.remove('active', 'visible');
+    overlay.classList.remove('active', 'visible', 'overlay--nav');
   };
 
   mobileMenuButton.addEventListener('click', (e) => {
     e.stopPropagation();
     mobileMenuVisible = !mobileMenuVisible;
 
-    mobileMenuVisible ? showMenu() : hideMenu();
+    mobileMenuVisible && !overlay.classList.contains('overlay--select') ? showMenu() : hideMenu();
   });
 
   overlay.addEventListener('click', (e) => {
@@ -204,30 +220,25 @@ const handleMobileMenu = (header, overlay) => {
     }
   });
 
-  mobileMenu.addEventListener('click', () => {
+  [mobileMenu, headerWrapper].map((item) => item.addEventListener('click', () => {
     mobileMenuVisible = !mobileMenuVisible;
     hideMenu();
-  });
-
-  headerWrapper.addEventListener('click', () => {
-    mobileMenuVisible = !mobileMenuVisible;
-    hideMenu();
-  });
+  }));
 };
 
 const init = () => {
   const header = document.querySelector('.main-header');
   const overlay = document.querySelector('.overlay');
+  const mobileMenuButton = document.querySelector('.header__mobile-menu-button');
 
   renderLogo();
   renderBackgroundsDependingOnDevice(header);
   handleSlider();
   renderProductImages();
   renderPaymentProviders();
-  handleFooterSelects(overlay);
-  handleMobileMenu(header, overlay);
+  handleFooterSelects(header, overlay, mobileMenuButton);
+  handleMobileMenu(header, overlay, mobileMenuButton);
   handleScroll(header);
 };
 
 init();
-
