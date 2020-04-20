@@ -9,9 +9,18 @@ $product-new-arrival-desktop-md-height: 42rem;
 $product-new-arrival-mobile-height: 35rem;
 
 .product {
+  $hover-transition-time: 0.1s;
   @include flex(flex-start, stretch);
   flex-direction: column;
   height: 100%;
+
+  &:hover {
+    .product {
+      &__image {
+        filter: brightness(0.75);
+      }
+    }
+  }
 
   &--sale {
     position: relative;
@@ -34,13 +43,30 @@ $product-new-arrival-mobile-height: 35rem;
     position: relative;
     justify-content: flex-end;
 
-    .product__image {
-      position: absolute;
-      height: 100%;
+    .product {
+      &__image {
+        position: absolute;
+        height: 100%;
+      }
+
+      &__details {
+        position: relative;
+      }
+
+      &__name,
+      &__price {
+        transition: $hover-transition-time color ease-in-out;
+        will-change: color;
+      }
     }
 
-    .product__details {
-      position: relative;
+    &:hover {
+      .product {
+        &__name,
+        &__price {
+          color: #fff;
+        }
+      }
     }
   }
 
@@ -117,6 +143,8 @@ $product-new-arrival-mobile-height: 35rem;
     width: 100%;
     flex: 1;
     background: no-repeat center / cover;
+    transition: $hover-transition-time filter ease-in-out;
+    will-change: filter;
   }
 
   &__details {
@@ -142,10 +170,6 @@ $product-new-arrival-mobile-height: 35rem;
   &__name {
     color: $secondary-text-color;
     font-weight: 400;
-  }
-
-  &__price {
-    font-weight: 700;
   }
 
   &__previous-price {

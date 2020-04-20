@@ -10,5 +10,6 @@ body {
 }
 
 ::selection {
-  background-color: rgba($primary-text-color, 0.25);
+  background-color: rgba($primary-text-color, 0.2);
+  color: $primary-text-color;
 }

@@ -21,7 +21,7 @@
     width: 2.6rem;
     height: 2.6rem;
     border-radius: 50%;
-    transition: 0.35s background-color 0.1s ease-in-out;
+    transition: 0.25s background-color ease-in-out;
     will-change: background-color;
 
     &:hover {
@@ -46,7 +46,7 @@
       background-color: currentColor;
       opacity: 0.1;
       height: 110%;
-      transition: 0.4s left 0.1s cubic-bezier(0.72, 0, 0.22, 1.74);
+      transition: 0.35s left 0.1s cubic-bezier(0.72, 0, 0.22, 1.74);
       will-change: left;
       z-index: -1;
 
