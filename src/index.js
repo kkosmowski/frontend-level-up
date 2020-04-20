@@ -10,9 +10,9 @@ const renderLogo = () => {
   document.querySelector('.header__logo > img').src = Logo;
 };
 
-const renderBackgroundsDependingOnDevice = () => {
+const renderBackgroundsDependingOnDevice = (header) => {
   // optimize assets depending on whether the device is a mobile or desktop
-  document.querySelector('.main-header').classList.add(isMobile ? 'mobile' : 'desktop');
+  header.classList.add(isMobile ? 'mobile' : 'desktop');
 };
 
 const renderProductImages = () => {
@@ -109,9 +109,8 @@ const renderPaymentProviders = () => {
   document.querySelector('.footer__payment-providers > img').src = PaymentProviders;
 };
 
-const handleFooterSelects = () => {
+const handleFooterSelects = (overlay) => {
   const customSelects = document.querySelectorAll('div.select');
-  const overlay = document.querySelector('.overlay');
 
   overlay.addEventListener('click', (e) => {
     // custom blur
@@ -148,22 +147,86 @@ const handleFooterSelects = () => {
   });
 };
 
-const handleScroll = () => {
+const handleScroll = (header) => {
+  const headerBar = document.querySelector('.header__bar');
+  const mobileMenu = document.querySelector('.main-nav--mobile');
   const goToTheTop = document.querySelector('.go-to-the-top');
   const height = window.innerHeight;
   window.addEventListener('scroll', () => {
-    window.scrollY > height ? goToTheTop.classList.add('sticky') : goToTheTop.classList.remove('sticky');
+    window.scrollY > height
+      ? goToTheTop.classList.add('sticky')
+      : goToTheTop.classList.remove('sticky');
+
+    if (window.scrollY > header.getBoundingClientRect().height) {
+      headerBar.classList.add('scrolled');
+      mobileMenu.classList.add('scrolled');
+    } else {
+      headerBar.classList.remove('scrolled');
+      mobileMenu.classList.remove('scrolled');
+    }
+  });
+};
+
+const handleMobileMenu = (header, overlay) => {
+  const headerWrapper = document.querySelector('.header__wrapper');
+  const mobileMenuButton = document.querySelector('.header__mobile-menu-button');
+  const desktopMenu = document.querySelector('.main-nav');
+  const mobileMenu = desktopMenu.cloneNode(true);
+  let mobileMenuVisible = false;
+  mobileMenu.classList.remove('main-nav');
+  mobileMenu.classList.add('main-nav--mobile');
+
+  header.append(mobileMenu);
+
+  const showMenu = () => {
+    mobileMenu.classList.add('visible');
+    overlay.classList.add('active', 'visible');
+  };
+
+  const hideMenu = () => {
+    mobileMenu.classList.remove('visible');
+    overlay.classList.remove('active', 'visible');
+  };
+
+  mobileMenuButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    mobileMenuVisible = !mobileMenuVisible;
+
+    mobileMenuVisible ? showMenu() : hideMenu();
+  });
+
+  overlay.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    if (mobileMenuVisible) {
+      mobileMenuVisible = !mobileMenuVisible;
+      hideMenu();
+    }
+  });
+
+  mobileMenu.addEventListener('click', () => {
+    mobileMenuVisible = !mobileMenuVisible;
+    hideMenu();
+  });
+
+  headerWrapper.addEventListener('click', () => {
+    mobileMenuVisible = !mobileMenuVisible;
+    hideMenu();
   });
 };
 
 const init = () => {
+  const header = document.querySelector('.main-header');
+  const overlay = document.querySelector('.overlay');
+
   renderLogo();
-  renderBackgroundsDependingOnDevice();
+  renderBackgroundsDependingOnDevice(header);
   handleSlider();
   renderProductImages();
   renderPaymentProviders();
-  handleFooterSelects();
-  handleScroll();
+  handleFooterSelects(overlay);
+  handleMobileMenu(header, overlay);
+  handleScroll(header);
 };
 
 init();

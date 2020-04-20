@@ -22,10 +22,17 @@ body {
   width: 100%;
   height: 100%;
   z-index: 10;
+  background-color: #000;
   opacity: 0;
   pointer-events: none;
+  transition: 0.25s opacity ease-in-out;
+  will-change: opacity;
 
   &.active {
     pointer-events: all;
+  }
+
+  &.visible {
+    opacity: 0.8;
   }
 }

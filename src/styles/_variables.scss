@@ -6,6 +6,13 @@ $desktop-md-horizontal-margin: 2rem;
 $tablet-horizontal-margin: 3rem;
 $mobile-horizontal-margin: 2rem;
 
+$main-header-wrapper-desktop-height: 9rem;
+$main-header-wrapper-desktop-height-scrolled: 6.4rem;
+$main-header-wrapper-tablet-height: 8rem;
+$main-header-wrapper-tablet-height-scrolled: 6rem;
+$main-header-wrapper-mobile-height: 6.5rem;
+$main-header-wrapper-mobile-height-scrolled: 5.2rem;
+
 $nav-item-desktop-font-size: 1.5rem;
 
 $default-horizontal-button-padding: 0.6rem;
@@ -21,7 +28,7 @@ $tertiary-text-color: #858585;
 $accents-color: #263a49;
 $warning-color: #bf4444;
 
-$main-header-background-color: #d7d7d7;
+$main-header-background-color: #cccccc;
 
 $button-icon-hover-background: rgba($primary-text-color, 0.15);
 

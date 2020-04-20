@@ -65,7 +65,7 @@
   }
 }
 
-@include media-desktop-xs-down-and-mobile() {
+@include media-tablet() {
   .section {
     &__grid-4-columns {
       > * {
