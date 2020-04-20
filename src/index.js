@@ -12,11 +12,11 @@ const renderLogo = () => {
 
 const renderBackgroundsDependingOnDevice = () => {
   // optimize assets depending on whether the device is a mobile or desktop
-
   document.querySelector('.main-header').classList.add(isMobile ? 'mobile' : 'desktop');
 };
 
 const renderProductImages = () => {
+  // get a placeholder of exact size and use it as a source to each .product__image element
   [...document.querySelectorAll('.product__image')].map((productImage) => {
     let { width, height } = productImage.getBoundingClientRect();
     productImage.style.backgroundImage = `url(//via.placeholder.com/${ Math.floor(width) }x${ Math.floor(height) }.png)`
@@ -25,7 +25,6 @@ const renderProductImages = () => {
 
 const handleSlider = () => {
   // custom slider, probably an overkill, but I've always wanted to write one
-
   const sliderPrevButton = document.querySelector('.main-slider__button--prev');
   const sliderNextButton = document.querySelector('.main-slider__button--next');
   const mainSlider = document.querySelector('.main-slider');
@@ -35,6 +34,7 @@ const handleSlider = () => {
   createSlider(mainSliderSlides);
 
   if (isDesktop) {
+    // buttons and sliding logic should be used only on desktop
     const slide = document.querySelector('.main-slider__slide');
     const move = slide.getBoundingClientRect().width + parseInt(window.getComputedStyle(slide).marginRight);
 
@@ -66,6 +66,7 @@ const handleSlider = () => {
 const createSlider = (slides) => {
   const format = (number) => `$${ number.toFixed(2) }`;
 
+  // map each product from json into slider product slide
   SliderProducts.map((item) => {
     const slide = document.createElement('li');
     slide.classList.add('main-slider__slide', 'product', 'product--details-on-image');
@@ -84,8 +85,8 @@ const createSlider = (slides) => {
     const price = document.createElement('span');
     price.classList.add('product__price');
     price.textContent = typeof item.price === 'number'
-      ? format(item.price)
-      : `${ format(item.price.from) } - ${ format(item.price.to) }`;
+      ? format(item.price) // if price is single
+      : `${ format(item.price.from) } - ${ format(item.price.to) }`; // if price is a range
 
     if (item.oldPrice) {
       const oldPrice = document.createElement('span');
@@ -104,11 +105,17 @@ const createSlider = (slides) => {
 };
 
 const renderPaymentProviders = () => {
+  // render footer payments image
   document.querySelector('.footer__payment-providers > img').src = PaymentProviders;
 };
 
-renderLogo();
-renderBackgroundsDependingOnDevice();
-handleSlider();
-renderProductImages();
-renderPaymentProviders();
+const init = () => {
+  renderLogo();
+  renderBackgroundsDependingOnDevice();
+  handleSlider();
+  renderProductImages();
+  renderPaymentProviders();
+};
+
+init();
+
