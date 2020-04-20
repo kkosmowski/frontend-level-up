@@ -76,6 +76,14 @@ $footer-border: 1px solid #eee;
   &__controls {
     color: $tertiary-text-color;
     font-weight: 400;
+
+    .form-field {
+      align-items: center;
+
+      &:not(:last-child) {
+        margin-right: 4rem;
+      }
+    }
   }
 
   @include media-desktop-md-down() {

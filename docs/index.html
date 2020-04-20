@@ -6,6 +6,7 @@
   <title>Frontend LevelUP 2020</title>
 </head>
 <body>
+<div class="overlay"></div>
 <header class="header main-header">
   <div class="header__wrapper">
     <nav class="nav main-nav" role="navigation">
@@ -285,22 +286,85 @@
       </nav>
       <div class="footer__controls">
         <div class="form-field">
-          <label for="currency">Currency</label>
-          <select name="currency" id="currency">
-            <option>USD</option>
-            <option>PLN</option>
-            <option>EUR</option>
-            <option>JPY</option>
-          </select>
+          <label for="choose-currency">Currency</label>
+          <div class="select" data-name="currency">
+            <input type="checkbox" name="choose" id="choose-currency" class="choose">
+            <label class="option">
+              <span class="placeholder">USD</span>
+              <i class="chevron fas fa-chevron-down"></i>
+            </label>
+            <div class="options">
+              <label class="option current">
+                <input type="radio" name="currency" value="USD">
+                <span class="title">USD</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="currency" value="PLN">
+                <span class="title">PLN</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="currency" value="EUR">
+                <span class="title">EUR</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="currency" value="JPY">
+                <span class="title">JPY</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="currency" value="CNY">
+                <span class="title">CNY</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="currency" value="MXN">
+                <span class="title">MXN</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="currency" value="SEK">
+                <span class="title">SEK</span>
+              </label>
+            </div>
+          </div>
         </div>
         <div class="form-field">
-          <label for="language">Language</label>
-          <select name="language" id="language">
-            <option>Engliish</option>
-            <option>Polish</option>
-            <option>Spanish</option>
-            <option>German</option>
-          </select>
+          <label for="choose-language">Language</label>
+          <div class="select" data-name="language">
+            <input type="checkbox" name="choose" id="choose-language" class="choose">
+
+            <label class="option">
+              <span class="placeholder">English</span>
+              <i class="chevron fas fa-chevron-down"></i>
+            </label>
+            <div class="options">
+              <label class="option current">
+                <input type="radio" name="language" value="English">
+                <span class="title">English</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="language" value="Polish">
+                <span class="title">Polish</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="language" value="Spanish">
+                <span class="title">Spanish</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="language" value="German">
+                <span class="title">German</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="language" value="Japanese">
+                <span class="title">Japanese</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="language" value="Chinese">
+                <span class="title">Chinese</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="language" value="Swedish">
+                <span class="title">Swedish</span>
+              </label>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -109,12 +109,57 @@ const renderPaymentProviders = () => {
   document.querySelector('.footer__payment-providers > img').src = PaymentProviders;
 };
 
+const handleFooterSelects = () => {
+  const customSelects = document.querySelectorAll('div.select');
+  const overlay = document.querySelector('.overlay');
+
+  overlay.addEventListener('click', (e) => {
+    // custom blur
+    e.stopPropagation();
+
+    [...customSelects].map((select) => {
+      select.querySelector('input[type=checkbox]').checked = false;
+    });
+
+    overlay.classList.remove('active');
+  });
+
+  [...customSelects].map((select) => {
+    const checkbox = select.querySelector('input[type=checkbox]');
+    const placeholder = select.querySelector('.placeholder');
+    const name = select.dataset.name;
+
+    checkbox.addEventListener('change', (e) => {
+      e.stopPropagation();
+      if (checkbox.checked) overlay.classList.add('active');
+    });
+
+    select.addEventListener('click', (e) => {
+      if (e.target.name === name) {
+        e.target.checked = true;
+        checkbox.checked = false;
+        overlay.classList.remove('active');
+
+        placeholder.textContent = e.target.value;
+        [...select.querySelectorAll('.option')].map((option) => option.classList.remove('current'));
+        e.target.parentNode.classList.add('current');
+      }
+    });
+
+    select.addEventListener('blur', () => {
+      console.log('blur')
+;      checkbox.checked = false;
+    })
+  })
+};
+
 const init = () => {
   renderLogo();
   renderBackgroundsDependingOnDevice();
   handleSlider();
   renderProductImages();
   renderPaymentProviders();
+  handleFooterSelects();
 };
 
 init();
