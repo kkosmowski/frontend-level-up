@@ -3,6 +3,7 @@
 
 html {
   font: 500 10px Jost, Arial, sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -10,5 +11,28 @@ body {
 }
 
 ::selection {
-  background-color: rgba($primary-text-color, 0.25);
+  background-color: rgba($primary-text-color, 0.2);
+  color: $primary-text-color;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s opacity ease-in-out;
+  will-change: opacity;
+
+  &.active {
+    pointer-events: all;
+  }
+
+  &.visible {
+    opacity: 0.8;
+  }
 }

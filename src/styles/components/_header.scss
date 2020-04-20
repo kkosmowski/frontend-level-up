@@ -1,13 +1,6 @@
 $main-header-desktop-height: 55rem;
 $main-header-mobile-height: 52rem;
 
-$main-header-wrapper-desktop-height: 9rem;
-$main-header-wrapper-tablet-height: 6rem;
-$main-header-wrapper-mobile-height: 5.2rem;
-
-$main-header-wrapper-desktop-margin: 0 1rem;
-$main-header-wrapper-mobile-margin: 0 2rem;
-
 $logo-desktop-width: 11.7rem;
 $logo-mobile-width: 10rem;
 $logo-desktop-height: 2.2rem;
@@ -22,12 +15,30 @@ $logo-mobile-height: 1.8rem;
     display: none;
   }
 
+  &__bar {
+    position: fixed;
+    z-index: 12;
+    width: 100%;
+    height: $main-header-wrapper-desktop-height;
+    @include flex(center, center);
+    background-color: inherit;
+    transition: 0.25s all ease-in-out;
+
+    &.scrolled {
+      height: $main-header-wrapper-desktop-height-scrolled;
+      box-shadow: 0 0.5rem 1rem rgba(#000, 0.1);
+      background-color: #fff;
+    }
+  }
+
   &__wrapper {
+    position: fixed;
+    z-index: 12;
     width: 100%;
     max-width: $layout-desktop-max-width;
-    height: $main-header-wrapper-desktop-height;
+    height: inherit;
     @include flex(space-between, center);
-    margin: $main-header-wrapper-desktop-margin;
+    padding: 0 $desktop-horizontal-margin;
   }
 
   .main-nav,
@@ -38,7 +49,12 @@ $logo-mobile-height: 1.8rem;
   &__logo {
     width: $logo-desktop-width;
     height: $logo-desktop-height;
-    object-fit: contain;
+
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 
   &__controls {
@@ -74,8 +90,16 @@ $logo-mobile-height: 1.8rem;
 
 @include media-tablet() {
   .header {
-    &__wrapper {
+    &__bar {
       height: $main-header-wrapper-tablet-height;
+
+      &.scrolled {
+        height: $main-header-wrapper-tablet-height-scrolled;
+      }
+    }
+
+    &__wrapper {
+      padding: 0 $tablet-horizontal-margin;
     }
   }
 }
@@ -93,9 +117,16 @@ $logo-mobile-height: 1.8rem;
   .header {
     height: $main-header-mobile-height;
 
-    &__wrapper {
+    &__bar {
       height: $main-header-wrapper-mobile-height;
-      margin: $main-header-wrapper-mobile-margin;
+
+      &.scrolled {
+        height: $main-header-wrapper-mobile-height-scrolled;
+      }
+    }
+
+    &__wrapper {
+      padding: 0 $mobile-horizontal-margin;
     }
 
     &__logo {

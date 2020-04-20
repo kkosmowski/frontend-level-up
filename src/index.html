@@ -6,27 +6,35 @@
   <title>Frontend LevelUP 2020</title>
 </head>
 <body>
-<header class="header main-header">
-  <div class="header__wrapper">
-    <nav class="nav main-nav" role="navigation">
-      <a href="#" class="nav__item nav__item--active">Home</a>
-      <a href="#" class="nav__item">Shop</a>
-      <a href="#" class="nav__item">Elements</a>
-      <a href="#" class="nav__item">Blog</a>
-      <a href="#" class="nav__item">Page</a>
-    </nav>
-    <button class="button header__mobile-menu-button" type="button">
-      <i class="fas fa-bars"></i>
-    </button>
-    <img class="header__logo" alt="Zonex Shop">
-    <div class="header__controls">
-      <button class="button button--icon header__user-button" type="button">
-        <i class="fas fa-user"></i>
+<div class="overlay"></div>
+<a href="#main-header" class="go-to-the-top" title="Go to the top">
+  <i class="fas fa-long-arrow-alt-up"></i>
+</a>
+<header class="header main-header" id="main-header">
+  <div class="header__bar">
+    <div class="header__wrapper">
+      <nav class="nav main-nav" role="navigation">
+        <a href="#" class="nav__item nav__item--active">Home</a>
+        <a href="#" class="nav__item">Shop</a>
+        <a href="#" class="nav__item">Elements</a>
+        <a href="#" class="nav__item">Blog</a>
+        <a href="#" class="nav__item">Page</a>
+      </nav>
+      <button class="button header__mobile-menu-button" type="button">
+        <i class="fas fa-bars"></i>
       </button>
-      <button class="button button--icon header__cart-button" type="button">
-        <i class="fas fa-shopping-bag"></i>
-      </button>
-      <i class="chip notifications-chip">3</i>
+      <a href="#" class="header__logo">
+        <img alt="Zonex Shop">
+      </a>
+      <div class="header__controls">
+        <button class="button button--icon header__user-button" type="button">
+          <i class="fas fa-user"></i>
+        </button>
+        <button class="button button--icon header__cart-button" type="button">
+          <i class="fas fa-shopping-bag"></i>
+        </button>
+        <i class="chip notifications-chip">3</i>
+      </div>
     </div>
   </div>
 </header>
@@ -196,7 +204,7 @@
         </div>
       </div>
     </div>
-    <button type="button" class="button button--outlined section__button">All products</button>
+    <button type="button" class="button button--outlined section__button" title="See all products">All products</button>
   </section>
   <section class="section products-collage" id="products-collage">
     <div class="section__grid products-collage__grid">
@@ -251,7 +259,7 @@
                     <input type="email" placeholder=" " id="email" name="email-address" required class="input input--with-button">
                     <label for="email">Email Address</label>
                     <span class="input-warning">Invalid email address</span>
-                    <button type="submit" class="button button--text">Subscribe</button>
+                    <button type="submit" class="button button--text" title="Subscribe to the newsletter">Subscribe</button>
                 </div>
             </form>
             <span class="newsletter__no-spam-assurance">*Don't worry we don't spam</span>
@@ -263,16 +271,28 @@
 
     <div class="footer__row">
       <div class="footer__social">
-        <a href="#" class="footer__social-item footer__social-item--twitter">
+        <a href="#" class="footer__social-item footer__social-item--twitter"
+           aria-roledescription="Twitter icon"
+           title="Visit our Twitter profile"
+        >
           <i class="fab fa-twitter"></i>
         </a>
-        <a href="#" class="footer__social-item footer__social-item--facebook">
+        <a href="#" class="footer__social-item footer__social-item--facebook"
+           aria-roledescription="Facebook icon"
+           title="Visit our Facebook page"
+        >
           <i class="fab fa-facebook-square"></i>
         </a>
-        <a href="#" class="footer__social-item footer__social-item--instagram">
+        <a href="#" class="footer__social-item footer__social-item--instagram"
+           aria-roledescription="Instagram icon"
+           title="Visit our Instagram profile"
+        >
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="#" class="footer__social-item footer__social-item--pinterest">
+        <a href="#" class="footer__social-item footer__social-item--pinterest"
+           aria-roledescription="Pinterest icon"
+           title="Visit our Pinterest profile"
+        >
           <i class="fab fa-pinterest-p"></i>
         </a>
       </div>
@@ -283,22 +303,92 @@
       </nav>
       <div class="footer__controls">
         <div class="form-field">
-          <label for="currency">Currency</label>
-          <select name="currency" id="currency">
-            <option>USD</option>
-            <option>PLN</option>
-            <option>EUR</option>
-            <option>JPY</option>
-          </select>
+          <label for="choose-currency">Currency</label>
+          <div class="select" data-name="currency">
+            <input
+              type="checkbox" name="choose" id="choose-currency" class="choose"
+              aria-roledescription="Change displayed currency"
+              title="Change displayed currency"
+            >
+            <label class="option">
+              <span class="placeholder">USD</span>
+              <i class="chevron fas fa-chevron-down"></i>
+            </label>
+            <div class="options">
+              <label class="option current">
+                <input type="radio" name="currency" value="USD">
+                <span class="title">USD</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="currency" value="PLN">
+                <span class="title">PLN</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="currency" value="EUR">
+                <span class="title">EUR</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="currency" value="JPY">
+                <span class="title">JPY</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="currency" value="CNY">
+                <span class="title">CNY</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="currency" value="MXN">
+                <span class="title">MXN</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="currency" value="SEK">
+                <span class="title">SEK</span>
+              </label>
+            </div>
+          </div>
         </div>
         <div class="form-field">
-          <label for="language">Language</label>
-          <select name="language" id="language">
-            <option>Engliish</option>
-            <option>Polish</option>
-            <option>Spanish</option>
-            <option>German</option>
-          </select>
+          <label for="choose-language">Language</label>
+          <div class="select" data-name="language">
+            <input
+              type="checkbox" name="choose" id="choose-language" class="choose"
+              aria-roledescription="Change displayed language"
+              title="Change displayed language"
+            >
+            <label class="option">
+              <span class="placeholder">English</span>
+              <i class="chevron fas fa-chevron-down"></i>
+            </label>
+            <div class="options">
+              <label class="option current">
+                <input type="radio" name="language" value="English">
+                <span class="title">English</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="language" value="Polish">
+                <span class="title">Polish</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="language" value="Spanish">
+                <span class="title">Spanish</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="language" value="German">
+                <span class="title">German</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="language" value="Japanese">
+                <span class="title">Japanese</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="language" value="Chinese">
+                <span class="title">Chinese</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="language" value="Swedish">
+                <span class="title">Swedish</span>
+              </label>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -307,7 +397,7 @@
           ©2019 Zonex All rights reserved
         </span>
       <div class="footer__payment-providers">
-        <img alt="Accepted payment providers: mastercard, visa, paypal">
+        <img alt="Accepted payment providers: mastercard, visa & paypal">
       </div>
     </div>
   </div>

@@ -26,7 +26,13 @@
 }
 
 @mixin media-tablet() {
-  @media (min-width: 600px) and (max-width: 1024px)  {
+  @media (min-width: 600px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin media-tablet-no-desktop() {
+  @media (min-width: 600px) and (max-width: 1024px) and (pointer: coarse) {
     @content;
   }
 }
