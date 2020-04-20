@@ -145,12 +145,7 @@ const handleFooterSelects = () => {
         e.target.parentNode.classList.add('current');
       }
     });
-
-    select.addEventListener('blur', () => {
-      console.log('blur')
-;      checkbox.checked = false;
-    })
-  })
+  });
 };
 
 const handleScroll = () => {

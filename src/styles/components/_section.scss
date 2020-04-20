@@ -61,11 +61,11 @@
 
 @include media-desktop-md-down() {
   .section {
-    padding: 10rem 2rem 0;
+    padding: 10rem $desktop-md-horizontal-margin 0;
   }
 }
 
-@include media-desktop-xs() {
+@include media-desktop-xs-down-and-mobile() {
   .section {
     &__grid-4-columns {
       > * {
@@ -121,9 +121,15 @@
   }
 }
 
+@include media-tablet() {
+  .section {
+    padding: 10rem $tablet-horizontal-margin 0;
+  }
+}
+
 @include media-mobile() {
   .section {
-    padding: 5rem 1.5rem 0;
+    padding: 5rem $mobile-horizontal-margin 0;
 
     &__title {
       font-size: 2.4rem;
