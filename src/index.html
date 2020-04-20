@@ -7,7 +7,10 @@
 </head>
 <body>
 <div class="overlay"></div>
-<header class="header main-header">
+<a href="#main-header" class="go-to-the-top" title="Go to the top">
+  <i class="fas fa-long-arrow-alt-up"></i>
+</a>
+<header class="header main-header" id="main-header">
   <div class="header__wrapper">
     <nav class="nav main-nav" role="navigation">
       <a href="#" class="nav__item nav__item--active">Home</a>
@@ -199,7 +202,7 @@
         </div>
       </div>
     </div>
-    <button type="button" class="button button--outlined section__button">All products</button>
+    <button type="button" class="button button--outlined section__button" title="See all products">All products</button>
   </section>
   <section class="section products-collage" id="products-collage">
     <div class="section__grid products-collage__grid">
@@ -254,7 +257,7 @@
                     <input type="email" placeholder=" " id="email" name="email-address" required class="input input--with-button">
                     <label for="email">Email Address</label>
                     <span class="input-warning">Invalid email address</span>
-                    <button type="submit" class="button button--text">Subscribe</button>
+                    <button type="submit" class="button button--text" title="Subscribe to the newsletter">Subscribe</button>
                 </div>
             </form>
             <span class="newsletter__no-spam-assurance">*Don't worry we don't spam</span>
@@ -266,16 +269,28 @@
 
     <div class="footer__row">
       <div class="footer__social">
-        <a href="#" class="footer__social-item footer__social-item--twitter">
+        <a href="#" class="footer__social-item footer__social-item--twitter"
+           aria-roledescription="Twitter icon"
+           title="Visit our Twitter profile"
+        >
           <i class="fab fa-twitter"></i>
         </a>
-        <a href="#" class="footer__social-item footer__social-item--facebook">
+        <a href="#" class="footer__social-item footer__social-item--facebook"
+           aria-roledescription="Facebook icon"
+           title="Visit our Facebook page"
+        >
           <i class="fab fa-facebook-square"></i>
         </a>
-        <a href="#" class="footer__social-item footer__social-item--instagram">
+        <a href="#" class="footer__social-item footer__social-item--instagram"
+           aria-roledescription="Instagram icon"
+           title="Visit our Instagram profile"
+        >
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="#" class="footer__social-item footer__social-item--pinterest">
+        <a href="#" class="footer__social-item footer__social-item--pinterest"
+           aria-roledescription="Pinterest icon"
+           title="Visit our Pinterest profile"
+        >
           <i class="fab fa-pinterest-p"></i>
         </a>
       </div>
@@ -288,7 +303,11 @@
         <div class="form-field">
           <label for="choose-currency">Currency</label>
           <div class="select" data-name="currency">
-            <input type="checkbox" name="choose" id="choose-currency" class="choose">
+            <input
+              type="checkbox" name="choose" id="choose-currency" class="choose"
+              aria-roledescription="Change displayed currency"
+              title="Change displayed currency"
+            >
             <label class="option">
               <span class="placeholder">USD</span>
               <i class="chevron fas fa-chevron-down"></i>
@@ -328,8 +347,11 @@
         <div class="form-field">
           <label for="choose-language">Language</label>
           <div class="select" data-name="language">
-            <input type="checkbox" name="choose" id="choose-language" class="choose">
-
+            <input
+              type="checkbox" name="choose" id="choose-language" class="choose"
+              aria-roledescription="Change displayed language"
+              title="Change displayed language"
+            >
             <label class="option">
               <span class="placeholder">English</span>
               <i class="chevron fas fa-chevron-down"></i>
@@ -373,7 +395,7 @@
           ©2019 Zonex All rights reserved
         </span>
       <div class="footer__payment-providers">
-        <img alt="Accepted payment providers: mastercard, visa, paypal">
+        <img alt="Accepted payment providers: mastercard, visa & paypal">
       </div>
     </div>
   </div>

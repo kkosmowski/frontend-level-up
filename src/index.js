@@ -153,6 +153,14 @@ const handleFooterSelects = () => {
   })
 };
 
+const handleScroll = () => {
+  const goToTheTop = document.querySelector('.go-to-the-top');
+  const height = window.innerHeight;
+  window.addEventListener('scroll', () => {
+    window.scrollY > height ? goToTheTop.classList.add('sticky') : goToTheTop.classList.remove('sticky');
+  });
+};
+
 const init = () => {
   renderLogo();
   renderBackgroundsDependingOnDevice();
@@ -160,6 +168,7 @@ const init = () => {
   renderProductImages();
   renderPaymentProviders();
   handleFooterSelects();
+  handleScroll();
 };
 
 init();
