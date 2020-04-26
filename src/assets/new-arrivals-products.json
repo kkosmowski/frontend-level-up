@@ -44,7 +44,7 @@
   },
   {
     "type": "hot",
-    "name": "Tailored indigo jumpsuit\n",
+    "name": "Tailored indigo jumpsuit",
     "price": 128,
     "oldPrice": 165,
     "addToCart": false,
@@ -63,6 +63,73 @@
     "name": "Backpack with contrasting buckle",
     "price": 158,
     "oldPrice": null,
+    "addToCart": false,
+    "options": false
+  },
+  {
+    "type": "new",
+    "name": "V-neck playsuit",
+    "price": 49,
+    "oldPrice": null,
+    "addToCart": true,
+    "options": true
+  },
+  {
+    "type": "hot",
+    "name": "Puff-sleeved dress",
+    "price": 69.99,
+    "oldPrice": 99.99,
+    "addToCart": false,
+    "options": false
+  },
+  {
+    "type": "",
+    "name": "Joggers with leg pockets",
+    "price": 59.6,
+    "oldPrice": null,
+    "addToCart": true,
+    "options": true
+  },
+  {
+    "type": "",
+    "name": "Embroidered denim shorts",
+    "price": 39,
+    "oldPrice": null,
+    "addToCart": false,
+    "options": false
+  },
+  {
+    "type": "bestseller",
+    "name": "Denim high waist shorts",
+    "price": {
+      "from": 40,
+      "to": 70
+    },
+    "oldPrice": null,
+    "addToCart": true,
+    "options": true
+  },
+  {
+    "type": "",
+    "name": "Lyocell denim dress",
+    "price": 35,
+    "oldPrice": null,
+    "addToCart": false,
+    "options": false
+  },
+  {
+    "type": "",
+    "name": "Loose-knit cardigan",
+    "price": 24.99,
+    "oldPrice": null,
+    "addToCart": true,
+    "options": true
+  },
+  {
+    "type": "few-left",
+    "name": "Wrapover skirt",
+    "price": 29.99,
+    "oldPrice": 39.99,
     "addToCart": false,
     "options": false
   }
