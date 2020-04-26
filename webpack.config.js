@@ -8,7 +8,7 @@ const WatchTimePlugin = require('webpack-watch-time-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: './src/js/index.js',
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'docs'),
