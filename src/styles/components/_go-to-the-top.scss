@@ -8,6 +8,7 @@
   width: $size;
   height: $size;
   @include flex(center, center);
+  background-color: #fff;
   border-radius: 50%;
   box-shadow: 0 0.5rem 3rem rgba(#000, 0.1);
   opacity: 0;

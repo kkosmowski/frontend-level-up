@@ -3,7 +3,7 @@ import { handleMobileMenu, renderBackgroundsBasedOnDevice, renderLogo } from './
 import { handleFooterSelects, renderPaymentProviders, setFooterYear } from './modules/footer';
 import handleSlider from './modules/slider';
 import handleScroll from './modules/scroll';
-import renderProductImages from './modules/products';
+import { handleAllProductsButton, renderNewArrivals } from './modules/products';
 
 const init = () => {
   const header = document.querySelector('.main-header');
@@ -13,7 +13,8 @@ const init = () => {
   renderLogo();
   renderBackgroundsBasedOnDevice(header);
   handleSlider();
-  renderProductImages();
+  renderNewArrivals();
+  handleAllProductsButton();
   setFooterYear();
   renderPaymentProviders();
   handleFooterSelects(header, overlay, mobileMenuButton);

@@ -1,5 +1,6 @@
 import { isDesktop } from './responsiveness';
 import SliderProducts from '../../assets/slider-products';
+import { handlePriceCases, priceFormat, renderProductPrice } from './helpers';
 
 const handleSlider = () => {
   // custom slider, probably an overkill, but I've always wanted to write one
@@ -42,7 +43,6 @@ const handleSlider = () => {
 };
 
 const createSlider = (slides) => {
-  const format = (number) => `$${ number.toFixed(2) }`;
 
   // map each product from json into slider product slide
   SliderProducts.map((item) => {
@@ -62,17 +62,7 @@ const createSlider = (slides) => {
 
     const price = document.createElement('span');
     price.classList.add('product__price');
-    price.textContent = typeof item.price === 'number'
-      ? format(item.price) // if price is single
-      : `${ format(item.price.from) } - ${ format(item.price.to) }`; // if price is a range
-
-    if (item.oldPrice) {
-      const oldPrice = document.createElement('span');
-      oldPrice.classList.add('product__previous-price');
-      oldPrice.textContent = format(item.oldPrice);
-
-      price.prepend(oldPrice);
-    }
+    renderProductPrice(item, price, true);
 
     details.appendChild(name);
     details.appendChild(price);
