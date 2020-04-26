@@ -1,6 +1,6 @@
 import '../styles/style.scss';
 import { handleMobileMenu, renderBackgroundsBasedOnDevice, renderLogo } from './modules/header';
-import { handleFooterSelects, renderPaymentProviders } from './modules/footer';
+import { handleFooterSelects, renderPaymentProviders, setFooterYear } from './modules/footer';
 import handleSlider from './modules/slider';
 import handleScroll from './modules/scroll';
 import renderProductImages from './modules/products';
@@ -14,6 +14,7 @@ const init = () => {
   renderBackgroundsBasedOnDevice(header);
   handleSlider();
   renderProductImages();
+  setFooterYear();
   renderPaymentProviders();
   handleFooterSelects(header, overlay, mobileMenuButton);
   handleMobileMenu(header, overlay, mobileMenuButton);

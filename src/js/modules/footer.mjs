@@ -42,4 +42,8 @@ const handleFooterSelects = (header, overlay, mobileMenuButton) => {
   });
 };
 
-export { handleFooterSelects, renderPaymentProviders };
+const setFooterYear = () => {
+  document.querySelector('.footer__year').innerHTML = (new Date()).getFullYear() + '&nbsp;';
+};
+
+export { handleFooterSelects, renderPaymentProviders, setFooterYear };
