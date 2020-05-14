@@ -8,9 +8,10 @@ import renderCollageProducts from './modules/collage';
 import HttpService from './modules/httpService';
 
 const init = () => {
-  const sliderItemCount = 7;
-  const newArrivalsItemCount = 8;
-  const collageItemCount = 4;
+  const APIURL = 'https://asos2.p.rapidapi.com/products/v2/list?country=US&currency=USD&sort=freshness&lang=en-US&sizeSchema=US&offset=0&categoryId=4209';
+  const sliderItemCount = 7; // amount of products displayed in Slider
+  const newArrivalsItemCount = 8; // amount of products displayed in New Arrivals (initially & for each load)
+  const collageItemCount = 4; // amount of products in the featured products
 
   const header = document.querySelector('.main-header');
   const overlay = document.querySelector('.overlay');
@@ -18,17 +19,19 @@ const init = () => {
 
   renderLogo();
   renderBackgroundsBasedOnDevice(header);
-  renderMockedSlider(sliderItemCount);
-  renderMockedItems(newArrivalsItemCount);
-  const start = (new Date()).getTime();
-  (new HttpService()).get(`https://asos2.p.rapidapi.com/products/v2/list?country=US&currency=USD&sort=freshness&lang=en-US&sizeSchema=US&offset=0&categoryId=4209&limit=${ sliderItemCount + newArrivalsItemCount + collageItemCount }&store=US`)
-    .then(data => {
+
+  renderMockedSlider(sliderItemCount); // mock the slider
+  renderMockedItems(newArrivalsItemCount); // mock the New Arrivals
+  // featured products need no mocking, they are static
+
+  (new HttpService()).get(`${ APIURL }&limit=${ sliderItemCount + newArrivalsItemCount + collageItemCount }&store=US`)
+    .then(data => { // fetch only as much as we need (for slider, new arrivals and featured)
       const sliderProducts = data.products.slice(0, sliderItemCount);
       const newArrivalsProducts = data.products.slice(sliderItemCount, sliderItemCount + newArrivalsItemCount);
       const collageProducts = data.products.slice(sliderItemCount + newArrivalsItemCount, sliderItemCount + newArrivalsItemCount + collageItemCount);
-      handleSlider(sliderProducts);
-      renderNewArrivals(newArrivalsProducts, newArrivalsItemCount);
-      renderCollageProducts(collageProducts);
+      handleSlider(sliderProducts); // render actual products in the Slider
+      renderNewArrivals(newArrivalsProducts, newArrivalsItemCount); // render actual products in the New Arrivals
+      renderCollageProducts(collageProducts); // render actual products in the products collage
     });
 
   handleAllProductsButton(sliderItemCount + collageItemCount, newArrivalsItemCount);

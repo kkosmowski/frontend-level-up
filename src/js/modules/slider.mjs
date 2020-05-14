@@ -1,15 +1,15 @@
 import { isDesktop } from './responsiveness';
-import { mockedProduct, renderProductPrice } from './helpers';
+import { renderProductPrice } from './helpers';
 
 const handleSlider = (productList) => {
-  // custom slider, probably an overkill, but I've always wanted to write one
+  // generate slider
   const sliderPrevButton = document.querySelector('.main-slider__button--prev');
   const sliderNextButton = document.querySelector('.main-slider__button--next');
   const mainSlider = document.querySelector('.main-slider');
   const mainSliderContainer = document.querySelector('.main-slider__container');
   const mainSliderSlides = document.querySelector('.main-slider__slides');
 
-  createSlider(mainSliderSlides, productList);
+  renderSliderProducts(mainSliderSlides, productList); // render actual products
 
   if (isDesktop) {
     // buttons and sliding logic should be used only on desktop
@@ -42,9 +42,8 @@ const handleSlider = (productList) => {
 };
 
 const renderMockedSlider = (itemCount) => {
-
   // map each product from json into slider product slide
-  (new Array(itemCount).fill(mockedProduct)).map((item) => {
+  for (let i = 0; i < itemCount; i++) {
     const slide = document.createElement('li');
     slide.classList.add('main-slider__slide', 'product--mocked', 'product', 'product--details-on-image');
 
@@ -66,12 +65,11 @@ const renderMockedSlider = (itemCount) => {
     slide.appendChild(image);
     slide.appendChild(details);
     document.querySelector('.main-slider__slides').appendChild(slide);
-  });
+  }
 };
 
-const createSlider = (slides, productList) => {
-
-  // map each product from json into slider product slide
+const renderSliderProducts = (slides, productList) => {
+  // when products are received, update each mocked product with actual data
   productList.map((item) => {
     const slideElement = document.querySelector('.main-slider__slide.product--mocked');
     slideElement.querySelector('.product__image').style.backgroundImage = `url('${ '//' + item.imageUrl }')`;
@@ -79,7 +77,7 @@ const createSlider = (slides, productList) => {
 
     renderProductPrice(item, slideElement.querySelector('.product__price'), true);
 
-    slideElement.classList.remove('product--mocked');
+    slideElement.classList.remove('product--mocked'); // product is no longer mocked
   });
 };
 

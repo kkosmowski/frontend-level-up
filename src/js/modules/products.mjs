@@ -1,4 +1,4 @@
-import { mockedProduct, renderProductPrice } from './helpers';
+import { renderProductPrice } from './helpers';
 import HttpService from './httpService';
 
 let renderedProducts = 0;
@@ -6,7 +6,7 @@ let renderedProducts = 0;
 const newArrivalsContent = document.querySelector('.new-arrivals > .section__content');
 const allProductsButton = document.querySelector('.new-arrivals > .section__button');
 
-const types = {
+const types = { // product types, currently only 'hot' can be used if (item.isSellingFast)
   'bestseller': {
     classes: ['fas', 'fa-bullseye'],
     name: 'Bestseller',
@@ -30,17 +30,18 @@ const types = {
 };
 
 const handleAllProductsButton = (otherItemCount, newArrivalsItemCount) => allProductsButton.addEventListener('click', () => {
-  allProductsButton.disabled = true;
+  // when "All products" button is clicked, instantly add mocked items and update them into actual products later
+  allProductsButton.disabled = true; // disable button on click
   renderMockedItems(newArrivalsItemCount);
   return (new HttpService()).get(`https://asos2.p.rapidapi.com/products/v2/list?country=US&currency=USD&sort=freshness&lang=en-US&sizeSchema=US&offset=${ otherItemCount + renderedProducts }&categoryId=4209&limit=${ newArrivalsItemCount }&store=US`)
     .then(data => {
       renderNewArrivals(data.products);
-      allProductsButton.disabled = false;
+      allProductsButton.disabled = false; // enable button on received products
     });
 });
 
 const renderMockedItems = (itemCount) => {
-  (new Array(itemCount)).fill(mockedProduct).map((item) => {
+  for (let i = 0; i < itemCount; i++) { // create specified amount of mocked products
     const product = document.createElement('div');
     product.classList.add('product', 'product--mocked', 'new-arrivals__product');
 
@@ -100,13 +101,14 @@ const renderMockedItems = (itemCount) => {
     details.append(buttons);
     product.append(details);
     newArrivalsContent.append(product);
-  });
+  }
 };
 
 const renderNewArrivals = (productList) => {
-  renderedProducts += productList.length;
+  // when products are received, update each mocked product with actual data
+  renderedProducts += productList.length; // update counter of displayed products
 
-  productList.map((item) => {
+  productList.map((item) => { // update each mocked product with each product from received list
     const productElement = document.querySelector('.new-arrivals__product.product--mocked');
 
     productElement.querySelector('.product__image').style.backgroundImage = `url('${ '//' + item.imageUrl }')`;
@@ -127,7 +129,7 @@ const renderNewArrivals = (productList) => {
 
     renderProductPrice(item, productElement.querySelector('.product__price'), false);
 
-    productElement.classList.remove('product--mocked');
+    productElement.classList.remove('product--mocked'); // product is no longer mocked
   });
 };
 

@@ -10,20 +10,4 @@ const renderProductPrice = (item, price, renderOldPriceFirst) => {
   }
 };
 
-const mockedProduct = {
-  type: '',
-  name: 'Product name',
-  price: {
-    current: {
-      value: 49.99,
-      text: '$49.99',
-    },
-    previous: {
-      value: null,
-      text: '',
-    },
-  },
-  imageUrl: '//via.placeholder.com/314x400.png',
-};
-
-export { renderProductPrice, mockedProduct };
+export { renderProductPrice };
