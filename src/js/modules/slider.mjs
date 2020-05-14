@@ -1,8 +1,7 @@
 import { isDesktop } from './responsiveness';
-import SliderProducts from '../../assets/slider-products';
-import { handlePriceCases, priceFormat, renderProductPrice } from './helpers';
+import { mockedProduct, renderProductPrice } from './helpers';
 
-const handleSlider = () => {
+const handleSlider = (productList) => {
   // custom slider, probably an overkill, but I've always wanted to write one
   const sliderPrevButton = document.querySelector('.main-slider__button--prev');
   const sliderNextButton = document.querySelector('.main-slider__button--next');
@@ -10,7 +9,7 @@ const handleSlider = () => {
   const mainSliderContainer = document.querySelector('.main-slider__container');
   const mainSliderSlides = document.querySelector('.main-slider__slides');
 
-  createSlider(mainSliderSlides);
+  createSlider(mainSliderSlides, productList);
 
   if (isDesktop) {
     // buttons and sliding logic should be used only on desktop
@@ -42,12 +41,12 @@ const handleSlider = () => {
   }
 };
 
-const createSlider = (slides) => {
+const renderMockedSlider = (itemCount) => {
 
   // map each product from json into slider product slide
-  SliderProducts.map((item) => {
+  (new Array(itemCount).fill(mockedProduct)).map((item) => {
     const slide = document.createElement('li');
-    slide.classList.add('main-slider__slide', 'product', 'product--details-on-image');
+    slide.classList.add('main-slider__slide', 'product--mocked', 'product', 'product--details-on-image');
 
     const image = document.createElement('div');
     image.classList.add('product__image');
@@ -58,18 +57,31 @@ const createSlider = (slides) => {
     const name = document.createElement('a');
     name.classList.add('product__name');
     name.href = '#';
-    name.textContent = item.name;
 
     const price = document.createElement('span');
     price.classList.add('product__price');
-    renderProductPrice(item, price, true);
 
     details.appendChild(name);
     details.appendChild(price);
     slide.appendChild(image);
     slide.appendChild(details);
-    slides.appendChild(slide);
+    document.querySelector('.main-slider__slides').appendChild(slide);
+  });
+};
+
+const createSlider = (slides, productList) => {
+
+  // map each product from json into slider product slide
+  productList.map((item) => {
+    const slideElement = document.querySelector('.main-slider__slide.product--mocked');
+    slideElement.querySelector('.product__image').style.backgroundImage = `url('${ '//' + item.imageUrl }')`;
+    slideElement.querySelector('.product__name').textContent = item.name;
+
+    renderProductPrice(item, slideElement.querySelector('.product__price'), true);
+
+    slideElement.classList.remove('product--mocked');
   });
 };
 
 export default handleSlider;
+export { renderMockedSlider };

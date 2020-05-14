@@ -8,6 +8,15 @@ $product-new-arrival-desktop-height: 48rem;
 $product-new-arrival-desktop-md-height: 42rem;
 $product-new-arrival-mobile-height: 35rem;
 
+@keyframes placeholderAnimation {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
 .product {
   $hover-transition-time: 0.1s;
   @include flex(flex-start, stretch);
@@ -18,6 +27,76 @@ $product-new-arrival-mobile-height: 35rem;
     .product {
       &__image {
         filter: brightness(0.75);
+      }
+
+      &__details {
+        background-color: rgba(255,255,255,0);
+      }
+    }
+  }
+
+  &--mocked {
+    $placeholder-background: #d5d5d5;
+    $placeholder-active-background: #dfdfdf;
+
+    .product {
+      &__name {
+        width: 100%;
+      }
+
+      &__price {
+        width: 4.2rem;
+      }
+
+      &__name,
+      &__price {
+        height: 1.8rem;
+        margin: 0.1rem 0;
+        background-color: $placeholder-background;
+
+        &::after {
+          background: linear-gradient(90deg, $placeholder-background, $placeholder-active-background, $placeholder-background);
+        }
+      }
+
+      &__image {
+        background-color: $placeholder-background;
+
+        &::after {
+          background: linear-gradient(90deg, $placeholder-background, $placeholder-active-background, $placeholder-background);
+        }
+      }
+
+      &__name,
+      &__price,
+      &__image {
+        position: relative;
+        overflow: hidden;
+
+        &::after {
+          position: absolute;
+          content: '';
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          animation: placeholderAnimation 1s ease-in-out infinite;
+        }
+      }
+    }
+
+    &.product--details-on-image {
+      $placeholder-background: #c5c5c5;
+      $placeholder-active-background: #cfcfcf;
+
+      .product {
+        &__image {
+          background-color: $placeholder-background;
+
+          &::after {
+            background: linear-gradient(90deg, $placeholder-background, $placeholder-active-background, $placeholder-background);
+          }
+        }
       }
     }
   }
@@ -98,7 +177,7 @@ $product-new-arrival-mobile-height: 35rem;
     .product {
       &__details {
         height: 9rem;
-        padding-top: 2.5rem;
+        padding-top: 0.8rem;
 
         > * + * {
           margin-top: 0.6rem;

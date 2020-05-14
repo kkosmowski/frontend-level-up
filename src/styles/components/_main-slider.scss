@@ -60,6 +60,14 @@ $main-slider-button-size: 4.8rem;
       margin-right: 3rem;
     }
   }
+
+  .product__details {
+    background-color: rgba(255,255,255,0.5);
+
+    .product__name {
+      color: black;
+    }
+  }
 }
 
 @include media-desktop-md-down() {
