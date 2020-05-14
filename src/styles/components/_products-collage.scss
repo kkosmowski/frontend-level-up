@@ -29,6 +29,20 @@ $products-collage-desktop-height: 63rem;
     }
   }
 
+  .product--mocked {
+    .product__name {
+      height: 2.5rem;
+    }
+  }
+
+  .product__details {
+    background-image: linear-gradient(to top, rgba(255,255,255,0) 0%, rgba(255,255,255, 0.5) 80%);
+
+    .product__name {
+      color: black;
+    }
+  }
+
   @include media-desktop-xs-down() {
     &__grid {
       height: 100%;

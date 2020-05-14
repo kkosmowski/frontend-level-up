@@ -6,6 +6,10 @@
   border: 0;
   outline-color: $primary-text-color;
 
+  &:disabled {
+    cursor: default;
+  }
+
   &--text {
     margin: 0;
     padding: 0;

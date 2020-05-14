@@ -1,13 +1,12 @@
-import NewArrivalsProducts from '../../assets/new-arrivals-products';
 import { renderProductPrice } from './helpers';
+import HttpService from './httpService';
 
 let renderedProducts = 0;
-const productsToRender = 8; // amount of products initially displayed / dynamically added
 
 const newArrivalsContent = document.querySelector('.new-arrivals > .section__content');
 const allProductsButton = document.querySelector('.new-arrivals > .section__button');
 
-const types = {
+const types = { // product types, currently only 'hot' can be used if (item.isSellingFast)
   'bestseller': {
     classes: ['fas', 'fa-bullseye'],
     name: 'Bestseller',
@@ -30,24 +29,21 @@ const types = {
   },
 };
 
-const renderProductImages = () => {
-  // get a placeholder of exact size and use it as a source to each .product__image element
-  [...document.querySelectorAll('.product__image')].map((productImage) => {
-    if (!productImage.style.backgroundImage) {
-      let { width, height } = productImage.getBoundingClientRect();
-      productImage.style.backgroundImage = `url(//via.placeholder.com/${ Math.floor(width) }x${ Math.floor(height) }.png)`
-    }
-  });
-};
+const handleAllProductsButton = (otherItemCount, newArrivalsItemCount) => allProductsButton.addEventListener('click', () => {
+  // when "All products" button is clicked, instantly add mocked items and update them into actual products later
+  allProductsButton.disabled = true; // disable button on click
+  renderMockedItems(newArrivalsItemCount);
+  return (new HttpService()).get(`https://asos2.p.rapidapi.com/products/v2/list?country=US&currency=USD&sort=freshness&lang=en-US&sizeSchema=US&offset=${ otherItemCount + renderedProducts }&categoryId=4209&limit=${ newArrivalsItemCount }&store=US`)
+    .then(data => {
+      renderNewArrivals(data.products);
+      allProductsButton.disabled = false; // enable button on received products
+    });
+});
 
-const handleAllProductsButton = () => allProductsButton.addEventListener('click', renderNewArrivals);
-
-const renderNewArrivals = () => {
-  const toRenderList = NewArrivalsProducts.slice(renderedProducts, renderedProducts + productsToRender);
-
-  toRenderList.map((item) => {
+const renderMockedItems = (itemCount) => {
+  for (let i = 0; i < itemCount; i++) { // create specified amount of mocked products
     const product = document.createElement('div');
-    product.classList.add('product', 'new-arrivals__product');
+    product.classList.add('product', 'product--mocked', 'new-arrivals__product');
 
     const image = document.createElement('div');
     image.classList.add('product__image');
@@ -57,86 +53,84 @@ const renderNewArrivals = () => {
     details.classList.add('product__details');
 
     let type;
-    if (item.type) {
-      type = document.createElement('span');
-      type.classList.add('product__type');
-
-      const typeIcon = document.createElement('i');
-      typeIcon.classList.add(...types[item.type].classes);
-
-      const typeName = document.createElement('span');
-      typeName.classList.add('product__type-name');
-      typeName.textContent = types[item.type].name;
-
-      type.append(typeIcon);
-      type.append(typeName);
-      details.append(type);
-    }
+    type = document.createElement('span');
+    type.classList.add('product__type');
+    details.append(type);
 
     const name = document.createElement('a');
     name.href = '#';
     name.classList.add('product__name');
-    name.textContent = item.name;
     details.append(name);
 
-    let price;
-    if (item.price) {
-      price = document.createElement('span');
-      renderProductPrice(item, price, false);
-      details.append(price);
-    }
+    let price = document.createElement('span');
+    price.classList.add('product__price');
+    details.append(price);
 
-    let buttons;
-    if (item.addToCart || item.options) {
-      buttons = document.createElement('div');
-      buttons.classList.add('product__buttons');
+    let buttons = document.createElement('div');
+    buttons.classList.add('product__buttons');
 
-      if (item.addToCart) {
-        const addToCart = document.createElement('button');
-        addToCart.type = 'button';
-        addToCart.classList.add('button', 'button--text', 'product__add-to-cart-button');
-        addToCart.textContent = 'Add to cart';
-        buttons.append(addToCart);
-      }
+    const addToCart = document.createElement('button');
+    addToCart.type = 'button';
+    addToCart.classList.add('button', 'button--text', 'product__add-to-cart-button');
+    addToCart.textContent = 'Add to cart';
+    buttons.append(addToCart);
 
-      if (item.options) {
-        const actions = document.createElement('div');
-        actions.classList.add('product__actions');
+    const actions = document.createElement('div');
+    actions.classList.add('product__actions');
 
-        const detailsOption = document.createElement('button');
-        detailsOption.type = 'button';
-        detailsOption.classList.add('button', 'button--icon', 'product__details-button');
+    const detailsOption = document.createElement('button');
+    detailsOption.type = 'button';
+    detailsOption.classList.add('button', 'button--icon', 'product__details-button');
 
-        const detailsIcon = document.createElement('i');
-        detailsIcon.classList.add('fas', 'fa-search');
-        detailsOption.append(detailsIcon);
+    const detailsIcon = document.createElement('i');
+    detailsIcon.classList.add('fas', 'fa-search');
+    detailsOption.append(detailsIcon);
 
-        const favoriteOption = document.createElement('button');
-        favoriteOption.type = 'button';
-        favoriteOption.classList.add('button', 'button--icon', 'product__favorite-button');
+    const favoriteOption = document.createElement('button');
+    favoriteOption.type = 'button';
+    favoriteOption.classList.add('button', 'button--icon', 'product__favorite-button');
 
-        const favoriteIcon = document.createElement('i');
-        favoriteIcon.classList.add('far', 'fa-heart');
-        favoriteOption.append(favoriteIcon);
+    const favoriteIcon = document.createElement('i');
+    favoriteIcon.classList.add('far', 'fa-heart');
+    favoriteOption.append(favoriteIcon);
 
-        actions.append(detailsOption);
-        actions.append(favoriteOption);
-        buttons.append(actions);
-      }
+    actions.append(detailsOption);
+    actions.append(favoriteOption);
+    buttons.append(actions);
 
-      details.append(buttons);
-    }
-
+    details.append(buttons);
     product.append(details);
     newArrivalsContent.append(product);
-    renderedProducts++;
-
-    if (renderedProducts >= NewArrivalsProducts.length) {
-      allProductsButton.disabled = true;
-      return;
-    }
-  });
-
-  renderProductImages();
+  }
 };
-export { renderNewArrivals, handleAllProductsButton };
+
+const renderNewArrivals = (productList) => {
+  // when products are received, update each mocked product with actual data
+  renderedProducts += productList.length; // update counter of displayed products
+
+  productList.map((item) => { // update each mocked product with each product from received list
+    const productElement = document.querySelector('.new-arrivals__product.product--mocked');
+
+    productElement.querySelector('.product__image').style.backgroundImage = `url('${ '//' + item.imageUrl }')`;
+    productElement.querySelector('.product__name').textContent = item.name;
+
+    const type = productElement.querySelector('.product__type');
+    if (item.isSellingFast) {
+      const typeIcon = document.createElement('i');
+      typeIcon.classList.add(...types['hot'].classes);
+
+      const typeName = document.createElement('span');
+      typeName.classList.add('product__type-name');
+      typeName.textContent = types['hot'].name;
+
+      type.append(typeIcon);
+      type.append(typeName);
+    }
+
+    renderProductPrice(item, productElement.querySelector('.product__price'), false);
+
+    productElement.classList.remove('product--mocked'); // product is no longer mocked
+  });
+};
+
+export { renderMockedItems, renderNewArrivals, handleAllProductsButton };
